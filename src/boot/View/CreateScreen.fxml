@@ -12,7 +12,7 @@
    <children>
       <ImageView fx:id="submit" fitHeight="431.0" fitWidth="642.0" layoutX="-37.0" layoutY="-29.0">
          <image>
-            <Image url="@View/sincerely-media-4dSXcNTyXaI-unsplash.jpg" />
+            <Image url="@sincerely-media-4dSXcNTyXaI-unsplash.jpg" />
          </image>
       </ImageView>
       <JFXTextField fx:id="firstName" alignment="CENTER" labelFloat="true" layoutX="149.0" layoutY="67.0" prefHeight="27.0" prefWidth="129.0" promptText="First Name" />
