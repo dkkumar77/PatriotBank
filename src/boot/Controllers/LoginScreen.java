@@ -9,6 +9,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,26 +19,54 @@ import java.io.IOException;
 public class LoginScreen {
 
     @FXML
-    private JFXTextField username;
+    private JFXTextField userField;
 
     @FXML
-    private JFXButton submit;
+    private JFXButton loginButton;
 
     @FXML
-    private JFXButton create;
+    private JFXButton createButton;
 
     @FXML
-    private JFXButton help;
+    private JFXButton helpButton;
 
     @FXML
-    private JFXPasswordField password;
-
-    String pass = "";
-    String user = "";
+    private JFXPasswordField passField;
 
     @FXML
-    void handleSubmit(ActionEvent event) throws IOException {
+    private Hyperlink forgotButton;
 
+    @FXML
+    private Label userError;
+
+    @FXML
+    private Label passError;
+
+    String Username = "";
+    String Password = "";
+
+    private Parent root;
+    private Stage stage;
+    private Scene scene;
+
+    @FXML
+    void handleLogin(ActionEvent event) throws IOException {
+        if(userField.getText() == null || userField.getText().trim().isEmpty()) {
+            userError.setText("Please enter username.");
+        }
+        if(passField.getText() == null || passField.getText().trim().isEmpty()) {
+            passError.setText("Please enter password.");
+        }
+        else {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/boot/View/HomeScreen.fxml"));
+            root = loader.load();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+
+        /*
         if (event.getSource().equals(submit)) {
             pass = this.password.getText();
             user = this.username.getText();
@@ -44,7 +74,7 @@ public class LoginScreen {
 
             /**
              * NEED TO UPDATE
-             */
+
 
             if(passwordVerifyer(user,pass)) {
                 Parent root = FXMLLoader.load(getClass().getResource("src/boot/HomeScreen.fxml"));
@@ -59,31 +89,33 @@ public class LoginScreen {
 
 
         }
+        */
 
     }
 
     @FXML
-    public void handleCreate(ActionEvent actionEvent) {
+    void handleCreate(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/boot/View/createScene.fxml"));
+        root = loader.load();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
-        if (actionEvent.getSource().equals(create)){
 
+    @FXML
+    void handleForgot(ActionEvent event) {
 
-
-        }
     }
 
     @FXML
-
-    public void handleHelp(ActionEvent actionEvent) {
-
-        if (actionEvent.getSource().equals(help)){
-
-        }
-
+    void handleHelp(ActionEvent event) {
 
     }
 
-    public void handlePassword(ActionEvent actionEvent) {
+    @FXML
+    void handlePassword(ActionEvent event) {
 
     }
 
@@ -107,8 +139,8 @@ public class LoginScreen {
 
 
     private void clearParameters() {
-        this.pass = "";
-        this.user = "";
+        this.Username = "";
+        this.Password = "";
 
     }
 
