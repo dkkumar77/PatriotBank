@@ -13,10 +13,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Controller {
+
+public class LoginScreen {
+
     @FXML
     private JFXTextField username;
-
 
     @FXML
     private JFXButton submit;
@@ -33,25 +34,28 @@ public class Controller {
     String pass = "";
     String user = "";
 
-
     @FXML
     void handleSubmit(ActionEvent event) throws IOException {
 
         if (event.getSource().equals(submit)) {
             pass = this.password.getText();
             user = this.username.getText();
-            clearParameters();
 
 
             /**
              * NEED TO UPDATE
              */
-            Parent root = FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene;
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+
+            if(passwordVerifyer(user,pass)) {
+                Parent root = FXMLLoader.load(getClass().getResource("src/boot/HomeScreen.fxml"));
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene;
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
+
+            clearParameters();
 
 
         }
@@ -60,16 +64,28 @@ public class Controller {
 
     @FXML
     public void handleCreate(ActionEvent actionEvent) {
+
+        if (actionEvent.getSource().equals(create)){
+
+
+
+        }
     }
+
     @FXML
 
     public void handleHelp(ActionEvent actionEvent) {
+
+        if (actionEvent.getSource().equals(help)){
+
+        }
+
+
     }
-    @FXML
 
     public void handlePassword(ActionEvent actionEvent) {
-    }
 
+    }
 
     /**
      *
@@ -84,17 +100,21 @@ public class Controller {
      * pass and user variables
      *
      */
+
+
+
+
+
+
     private void clearParameters() {
         this.pass = "";
         this.user = "";
 
     }
 
-
-    private boolean passwordVerifyer(String password) {
+    private boolean passwordVerifyer(String username, String password) {
         if (password.contains(" ")) {
             return true;
-
         }
         return false;
     }
