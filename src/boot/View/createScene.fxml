@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,11 +14,14 @@
          <font>
             <Font size="20.0" />
          </font></Text>
-      <JFXButton fx:id="cancelButton" layoutX="210.0" layoutY="340.0" onAction="#handleCancel" text="Cancel" />
+      <JFXButton fx:id="cancelButton" layoutX="480.0" layoutY="417.0" onAction="#handleCancel" text="Cancel" />
       <JFXButton fx:id="submitButton" layoutX="494.0" layoutY="343.0" onAction="#handleSubmit" text="Submit" />
-      <JFXTextField fx:id="userField" alignment="CENTER" labelFloat="true" layoutX="310.0" layoutY="139.0" promptText="Username" />
-      <JFXTextField fx:id="emailField" alignment="TOP_CENTER" labelFloat="true" layoutX="310.0" layoutY="185.0" promptText="Email" />
-      <JFXPasswordField fx:id="passField" alignment="CENTER" labelFloat="true" layoutX="310.0" layoutY="237.0" promptText="Password" />
-      <JFXPasswordField fx:id="passField2" alignment="CENTER" labelFloat="true" layoutX="310.0" layoutY="287.0" promptText="Verify Password" />
+      <JFXTextField fx:id="userField" alignment="CENTER" labelFloat="true" layoutX="176.0" layoutY="104.0" promptText="Username" />
+      <JFXTextField fx:id="emailField" alignment="TOP_CENTER" labelFloat="true" layoutX="422.0" layoutY="104.0" promptText="Email" />
+      <JFXPasswordField fx:id="passField" alignment="CENTER" labelFloat="true" layoutX="422.0" layoutY="177.0" promptText="Password" />
+      <JFXPasswordField fx:id="passField2" alignment="CENTER" labelFloat="true" layoutX="422.0" layoutY="245.0" promptText="Verify Password" />
+      <JFXTextField fx:id="firstName" alignment="CENTER" labelFloat="true" layoutX="176.0" layoutY="177.0" promptText="First Name" />
+      <JFXTextField fx:id="lastName" alignment="CENTER" labelFloat="true" layoutX="176.0" layoutY="245.0" promptText="Last Name" />
+      <JFXDatePicker fx:id="dob" layoutX="301.0" layoutY="319.0" promptText="Date of Birth" />
    </children>
 </AnchorPane>
