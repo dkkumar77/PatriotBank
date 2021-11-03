@@ -28,17 +28,17 @@ public class financeController {
 
     @FXML
     void handleTransfer(ActionEvent event) throws IOException {
-        showBox("transfer");
+        showBox("Transfer");
     }
 
     @FXML
     void handleDeposit(ActionEvent event) throws IOException {
-        showBox("deposit");
+        showBox("Deposit");
     }
 
     @FXML
     void handleWithdraw(ActionEvent event) throws IOException {
-        showBox("withdraw");
+        showBox("Withdraw");
     }
 
     private void updateBalance() {
