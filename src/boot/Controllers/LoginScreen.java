@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -42,8 +43,8 @@ public class LoginScreen {
     @FXML
     private Label passError;
 
-    String Username = "";
-    String Password = "";
+    String username = "";
+    String password = "";
 
     private Parent root;
     private Stage stage;
@@ -51,13 +52,7 @@ public class LoginScreen {
 
     @FXML
     void handleLogin(ActionEvent event) throws IOException {
-        if(userField.getText() == null || userField.getText().trim().isEmpty()) {
-            userError.setText("Please enter username.");
-        }
-        if(passField.getText() == null || passField.getText().trim().isEmpty()) {
-            passError.setText("Please enter password.");
-        }
-        else {
+        if((checkName() && checkPassword())) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/boot/View/HomeScreen.fxml"));
             root = loader.load();
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -105,8 +100,13 @@ public class LoginScreen {
 
 
     @FXML
-    void handleForgot(ActionEvent event) {
-
+    void handleForgot(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/boot/View/forgotBox.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
     }
 
     @FXML
@@ -139,8 +139,8 @@ public class LoginScreen {
 
 
     private void clearParameters() {
-        this.Username = "";
-        this.Password = "";
+        this.username = "";
+        this.password = "";
 
     }
 
@@ -151,6 +151,23 @@ public class LoginScreen {
         return false;
     }
 
+    private boolean checkName() {
+        if(userField.getText() == null || userField.getText().trim().isEmpty()) {
+            userError.setText("Please enter username.");
+            return false;
+        }
+        userError.setText("");
+        return true;
+    }
+
+    private boolean checkPassword() {
+        if(passField.getText() == null || passField.getText().trim().isEmpty()) {
+            passError.setText("Please enter password.");
+            return false;
+        }
+        passError.setText("");
+        return true;
+    }
 }
 
 

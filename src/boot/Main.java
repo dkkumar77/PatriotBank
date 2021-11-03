@@ -13,10 +13,10 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("View/BootScene.fxml"));
         primaryStage.setTitle("Patriot Bank V1");
         primaryStage.setScene(new Scene(root, 800, 500));
-        primaryStage.setMaxHeight(500);
-        primaryStage.setMinHeight(500);
-        primaryStage.setMaxWidth(800);
-        primaryStage.setMinWidth(800);
+        primaryStage.setMaxHeight(539);
+        primaryStage.setMinHeight(539);
+        primaryStage.setMaxWidth(816);
+        primaryStage.setMinWidth(816);
 
         primaryStage.show();
     }
