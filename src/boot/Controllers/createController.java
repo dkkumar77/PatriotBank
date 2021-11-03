@@ -2,6 +2,7 @@ package boot.Controllers;
 
 import boot.Model.PathModel;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +12,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 import java.io.IOException;
 
 public class createController {
@@ -28,15 +31,20 @@ public class createController {
     private JFXTextField emailField;
 
     @FXML
-    private JFXTextField passField;
-
-    @FXML
-    private JFXTextField pass2Field;
+    private JFXPasswordField passField, passField2;
 
 
     private Parent root;
     private Stage stage;
     private Scene scene;
+
+    private String password;
+    private String password_verifyer;
+    private String email;
+
+    private String username;
+
+
 
     @FXML
     void handleCancel(ActionEvent event) throws IOException {
@@ -50,18 +58,69 @@ public class createController {
 
     @FXML
     void handleSubmit(ActionEvent event) throws IOException {
-        String email = emailField.getText();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(PathModel.VerificationScene));
+        if(event.getSource().equals(submitButton)) {
 
-        root = loader.load();
+            String [] data = getData();
 
-        verificationController controller = loader.getController();
-        controller.displayVerificationText(email);
 
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+            if(emailVerifyer(data[1])) {
+                if (matchingPasswords(data[2], data[3])) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource(PathModel.VerificationScene));
+                    root = loader.load();
+                    verificationController controller = loader.getController();
+                    controller.displayVerificationText(email);
+                    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                }
+            }
+
+        }
+
+
     }
+
+    private boolean matchingPasswords(String a, String b){
+
+        if(a.equals(b)){
+            return true;
+        }
+
+        return false;
+
+
+    }
+
+    private String [] getData(){
+
+        String [] array = new String[4];
+
+        array[0] = userField.getText();
+        array[1] = emailField.getText();
+        array[2] = passField.getText();
+        array[3] = passField2.getText();
+
+
+        return array;
+
+
+    }
+
+    private boolean emailVerifyer(String email) {
+        try{
+            InternetAddress e = new InternetAddress(email);
+            e.validate();;
+        } catch (AddressException e) {
+
+            return false;
+
+        }
+        return true;
+
+
+    }
+
+
 }

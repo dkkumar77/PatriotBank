@@ -53,6 +53,8 @@ public class LoginScreen {
 
     @FXML
     void handleLogin(ActionEvent event) throws IOException {
+
+
         if((checkName() && checkPassword())) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/boot/View/HomeScreen.fxml"));
             root = loader.load();

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -16,7 +17,7 @@
       <JFXButton fx:id="submitButton" layoutX="494.0" layoutY="343.0" onAction="#handleSubmit" text="Submit" />
       <JFXTextField fx:id="userField" alignment="CENTER" labelFloat="true" layoutX="310.0" layoutY="139.0" promptText="Username" />
       <JFXTextField fx:id="emailField" alignment="TOP_CENTER" labelFloat="true" layoutX="310.0" layoutY="185.0" promptText="Email" />
-      <JFXTextField fx:id="passField" alignment="CENTER" labelFloat="true" layoutX="310.0" layoutY="225.0" promptText="Password" />
-      <JFXTextField fx:id="pass2Field" alignment="CENTER" labelFloat="true" layoutX="310.0" layoutY="272.0" promptText="Confirm Password" />
+      <JFXPasswordField fx:id="passField" alignment="CENTER" labelFloat="true" layoutX="310.0" layoutY="237.0" promptText="Password" />
+      <JFXPasswordField fx:id="passField2" alignment="CENTER" labelFloat="true" layoutX="310.0" layoutY="287.0" promptText="Verify Password" />
    </children>
 </AnchorPane>
