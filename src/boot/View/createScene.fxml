@@ -3,16 +3,20 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boot.Controllers.createController">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: dark-blue;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boot.Controllers.createController">
    <children>
-      <Text layoutX="326.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CREATE ACCOUNT" />
-      <JFXButton fx:id="cancelButton" layoutX="187.0" layoutY="360.0" onAction="#handleCancel" text="Cancel" />
-      <JFXButton fx:id="submitButton" layoutX="513.0" layoutY="373.0" onAction="#handleSubmit" text="Submit" />
-      <JFXTextField fx:id="userField" layoutX="273.0" layoutY="139.0" promptText="Username" />
-      <JFXTextField fx:id="emailField" layoutX="273.0" layoutY="185.0" promptText="Email" />
-      <JFXTextField fx:id="passField" layoutX="273.0" layoutY="225.0" promptText="Password" />
-      <JFXTextField fx:id="pass2Field" layoutX="273.0" layoutY="272.0" promptText="Confirm Password" />
+      <Text layoutX="301.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patriot Bank" textAlignment="CENTER" wrappingWidth="150.55795288085938">
+         <font>
+            <Font size="20.0" />
+         </font></Text>
+      <JFXButton fx:id="cancelButton" layoutX="210.0" layoutY="340.0" onAction="#handleCancel" text="Cancel" />
+      <JFXButton fx:id="submitButton" layoutX="494.0" layoutY="343.0" onAction="#handleSubmit" text="Submit" />
+      <JFXTextField fx:id="userField" alignment="CENTER" labelFloat="true" layoutX="310.0" layoutY="139.0" promptText="Username" />
+      <JFXTextField fx:id="emailField" alignment="TOP_CENTER" labelFloat="true" layoutX="310.0" layoutY="185.0" promptText="Email" />
+      <JFXTextField fx:id="passField" alignment="CENTER" labelFloat="true" layoutX="310.0" layoutY="225.0" promptText="Password" />
+      <JFXTextField fx:id="pass2Field" alignment="CENTER" labelFloat="true" layoutX="310.0" layoutY="272.0" promptText="Confirm Password" />
    </children>
 </AnchorPane>

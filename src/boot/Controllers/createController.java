@@ -1,5 +1,6 @@
 package boot.Controllers;
 
+import boot.Model.PathModel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
@@ -39,7 +40,7 @@ public class createController {
 
     @FXML
     void handleCancel(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/boot/View/BootScene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(PathModel.BootScene));
         root = loader.load();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -51,7 +52,8 @@ public class createController {
     void handleSubmit(ActionEvent event) throws IOException {
         String email = emailField.getText();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/boot/View/verificationScene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(PathModel.VerificationScene));
+
         root = loader.load();
 
         verificationController controller = loader.getController();

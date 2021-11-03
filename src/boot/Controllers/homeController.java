@@ -1,5 +1,6 @@
 package boot.Controllers;
 
+import boot.Model.PathModel;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,8 +29,8 @@ public class homeController {
     AnchorPane finance, settings;
     
     public void initialize() throws IOException {
-        finance = FXMLLoader.load(getClass().getResource("/boot/View/financeScene.fxml"));
-        settings = FXMLLoader.load(getClass().getResource("/boot/View/SettingsScreen.fxml"));
+        finance = FXMLLoader.load(getClass().getResource(PathModel.FinanceScene));
+        settings = FXMLLoader.load(getClass().getResource(PathModel.SettingsScreen));
         stackPane.getChildren().add((Node) settings);
         stackPane.getChildren().add((Node) finance);
     }

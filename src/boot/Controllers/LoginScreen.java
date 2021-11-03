@@ -1,5 +1,6 @@
 package boot.Controllers;
 
+import boot.Model.PathModel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -61,36 +62,11 @@ public class LoginScreen {
             stage.show();
         }
 
-        /*
-        if (event.getSource().equals(submit)) {
-            pass = this.password.getText();
-            user = this.username.getText();
-
-
-            /**
-             * NEED TO UPDATE
-
-
-            if(passwordVerifyer(user,pass)) {
-                Parent root = FXMLLoader.load(getClass().getResource("src/boot/HomeScreen.fxml"));
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                Scene scene;
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-            }
-
-            clearParameters();
-
-
-        }
-        */
-
     }
 
     @FXML
     void handleCreate(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/boot/View/createScene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(PathModel.CreateScene));
         root = loader.load();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -101,7 +77,7 @@ public class LoginScreen {
 
     @FXML
     void handleForgot(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/boot/View/forgotBox.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource(PathModel.ForgotBox));
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         stage.setScene(scene);
