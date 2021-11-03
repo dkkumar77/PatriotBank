@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boot.Controllers.verificationController">
+   <children>
+      <Label fx:id="verificationText" layoutX="203.0" layoutY="101.0" prefHeight="134.0" prefWidth="395.0" text="An email with a verification code has been sent to" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="confirmButton" layoutX="330.0" layoutY="360.0" onAction="#handleConfirm" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #006940;" text="Confirm" textFill="WHITE" />
+      <JFXTextField fx:id="codeField" layoutX="333.0" layoutY="260.0" />
+   </children>
+</AnchorPane>
