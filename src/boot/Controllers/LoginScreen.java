@@ -54,26 +54,27 @@ public class LoginScreen {
     @FXML
     void handleLogin(ActionEvent event) throws IOException {
 
+        if(event.getSource().equals(loginButton)){
+            if((checkName() && checkPassword())) {
 
-        if((checkName() && checkPassword())) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/boot/View/HomeScreen.fxml"));
-            root = loader.load();
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+                sceneChanger(PathModel.HomeScreen, event);
+            }
+
         }
+
+
+
 
     }
 
     @FXML
     void handleCreate(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(PathModel.CreateScene));
-        root = loader.load();
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        if(event.getSource().equals(createButton)){
+            sceneChanger(PathModel.CreateScene, event);
+
+
+
+        }
     }
 
 
@@ -96,6 +97,16 @@ public class LoginScreen {
     void handlePassword(ActionEvent event) {
 
     }
+
+    private void sceneChanger(String path, ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+        root = loader.load();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
 
     /**
      *

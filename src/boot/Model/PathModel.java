@@ -10,7 +10,7 @@ public class PathModel {
     public static String HomeScreen = "/boot/View/HomeScreen.fxml";
     public static String SettingsScreen= "/boot/View/SettingsScreen.fxml";
     public static String TransferBox = "/boot/View/transferBox.fxml";
-    public static String VerificationScene = "/boot/View/transferBox.fxml";
+    public static String VerificationScene = "/boot/View/verificationScene.fxml";
     public static String WithdrawBox = "/boot/View/withdrawBox.fxml";
 
 

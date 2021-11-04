@@ -47,7 +47,7 @@ public class createController {
     private String email;
 
     private String username;
-
+    String[] data = new String[7];
 
 
     @FXML
@@ -66,21 +66,23 @@ public class createController {
         if (event.getSource().equals(submitButton)) {
 
 
-
-            String[] data = getData();
+            data = getData();
 
             if(emptyCheck()) {
                 if (usernameVerifyer(data[0])) {
                     if (emailVerifyer(data[1])) {
                         if (matchingPasswords(data[2], data[3])) {
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource(PathModel.VerificationScene));
-                            root = loader.load();
-                            verificationController controller = loader.getController();
-                            controller.displayVerificationText(email);
-                            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                            scene = new Scene(root);
-                            stage.setScene(scene);
-                            stage.show();
+
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource(PathModel.VerificationScene));
+                                root = loader.load();
+                                verificationController controller = loader.getController();
+                                controller.displayVerificationText(data[1]);
+                                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                                scene = new Scene(root);
+                                stage.setScene(scene);
+                                stage.show();
+
+
                         }
                     }
 
@@ -89,24 +91,38 @@ public class createController {
             }
 
 
+
+
         }
     }
 
-    private boolean emptyCheck() {
-        if(password.isEmpty() || password_verifyer.isEmpty() || firstName.getText().isEmpty() || lastName.getText().isEmpty() || emailField.getText().isEmpty() || userField.getText().isEmpty() || dob.getValue().toString().isEmpty()){
-            return false;
+    private void paramaterClearer(){
+        userField.setText("");
+        passField.setText("");
+        passField2.setText("");
+        emailField.setText("");
+        firstName.setText("");
+        lastName.setText("");
 
+    }
+
+    private boolean emptyCheck() {
+
+        for(int i = 0; i< data.length; i++){
+            if(data[i].isEmpty() == true){
+                return false;
+
+            }
         }
+
         return true;
 
     }
 
 
     private boolean usernameVerifyer(String a){
-        if(username.matches("^[a-zA-Z0-9]*$")){
-
+        if(data[0].matches("^[a-zA-Z0-9]*$")){
             return true;
-
         }
 
         return false;
@@ -128,16 +144,35 @@ public class createController {
 
     private String [] getData(){
 
-        String [] array = new String[4];
+        String [] array = new String[7];
 
         array[0] = userField.getText();
         array[1] = emailField.getText();
         array[2] = passField.getText();
+
         array[3] = passField2.getText();
+
+        if(nameChecker(firstName.getText()) && nameChecker(lastName.getText())) {
+            array[4] = firstName.getText();
+            array[5] = lastName.getText();
+        }
+
+        array[6] = dob.getValue().toString();
+
+
 
 
         return array;
 
+
+    }
+
+    private boolean nameChecker(String text) {
+
+        if(text.matches("[a-zA-Z]+")){
+            return true;
+        }
+        return false;
 
     }
 
