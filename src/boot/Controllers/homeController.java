@@ -6,6 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -46,8 +48,33 @@ public class homeController {
     }
 
     @FXML
-    void handleOut(ActionEvent event) {
+    void handleOut(ActionEvent event) throws IOException {
+
+        if(event.getSource().equals(outButton)) {
+            sceneChanger(PathModel.BootScene, event);
+
+        }
+
+        /*
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
+         */
     }
+
+
+
+    private void sceneChanger(String path, ActionEvent event) throws IOException{
+
+
+        Stage stage;
+        Parent root;
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+        root = loader.load();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }

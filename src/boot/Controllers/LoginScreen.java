@@ -54,6 +54,18 @@ public class LoginScreen {
     @FXML
     void handleLogin(ActionEvent event) throws IOException {
 
+        /**
+         * DELETE
+         */
+
+
+        sceneChanger(PathModel.HomeScreen, event);
+
+
+
+        /*
+
+         */
         if(event.getSource().equals(loginButton)){
             if((checkName() && checkPassword())) {
 
@@ -89,7 +101,11 @@ public class LoginScreen {
     }
 
     @FXML
-    void handleHelp(ActionEvent event) {
+    void handleHelp(ActionEvent event) throws IOException {
+        if(event.getSource().equals(helpButton)){
+            sceneChanger(PathModel.HelpScreen, event);
+
+        }
 
     }
 
