@@ -33,6 +33,10 @@ public class Help {
     Stage stage;
     Scene scene;
 
+    /*
+     * Handles the event of clicking back button at helpScreen.fxml
+     * @param event An event representing back button been clicked
+     * */
     @FXML
     void handleBack(ActionEvent event) throws IOException {
 
@@ -46,6 +50,10 @@ public class Help {
         }
     }
 
+    /*
+     * Handles the event of clicking submit button at helpScreen.fxml
+     * @param event An event representing submit button been clicked
+     * */
     @FXML
     void handleSubmit(ActionEvent event) {
 

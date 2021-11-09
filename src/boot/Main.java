@@ -8,6 +8,10 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    /*
+    * Main entry point for the JavaFX application.
+    * @param primaryStage Root stage object representing the primary window of application.
+    * */
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("View/BootScene.fxml"));

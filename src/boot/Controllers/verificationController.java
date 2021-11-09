@@ -24,6 +24,10 @@ public class verificationController {
 
     private String code;
 
+    /*
+     * Handles the event of clicking confirmButton at verificationScene.fxml
+     * @param event An event representing confirmButton been clicked
+     * */
     @FXML
     void handleConfirm(ActionEvent event) {
         if(codeField.getText() == null || codeField.getText().trim().isEmpty()) {
@@ -31,12 +35,18 @@ public class verificationController {
         }
     }
 
+    /*
+    * Creates random 4 digit number, and parses it to a String
+    * */
    public void initialize() {
         // Generate 4-digit code
         Random randomizer = new Random();
         code = String.format("%04d", randomizer.nextInt(10000));
    }
 
+    /*
+    * ???
+    * */
    private void sendEmail(String receiver) throws MessagingException {
         // Email setup
         Properties properties = new Properties();

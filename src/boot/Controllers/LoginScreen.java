@@ -51,6 +51,11 @@ public class LoginScreen {
     private Stage stage;
     private Scene scene;
 
+    /*
+    * Handles the event of clicking loginButton at BootScene.fxml
+    * Redirects to HomeScreen.fxml once user name and password is verified
+    * @param event An event representing loginButton been clicked
+    * */
     @FXML
     void handleLogin(ActionEvent event) throws IOException {
 
@@ -63,10 +68,9 @@ public class LoginScreen {
 
 
 
-        /*
-
-         */
+        /*If the object on which the event initially occurred is the loginButton button*/
         if(event.getSource().equals(loginButton)){
+            /*Checks in database if name and password match, if so, move to HomeScreen.fxml*/
             if((checkName() && checkPassword())) {
 
                 sceneChanger(PathModel.HomeScreen, event);
@@ -79,9 +83,18 @@ public class LoginScreen {
 
     }
 
+    /*
+    * Handles the event of clicking createButton at BootScene.fxml
+    * Redirects to createScene.fxml to allow user to create a new account
+    * @param event An event representing loginButton been clicked
+    * */
     @FXML
     void handleCreate(ActionEvent event) throws IOException {
+        /*If the object on which the event initially occurred is the createButton button
+        * Move to createScene.fxml
+        * */
         if(event.getSource().equals(createButton)){
+
             sceneChanger(PathModel.CreateScene, event);
 
 
@@ -89,7 +102,11 @@ public class LoginScreen {
         }
     }
 
-
+    /*
+     * Handles the event of clicking forgotButton at BootScene.fxml
+     * Redirects to forgotBox.fxml
+     * @param event An event representing forgotButton been clicked
+     * */
     @FXML
     void handleForgot(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(PathModel.ForgotBox));
@@ -100,6 +117,11 @@ public class LoginScreen {
         stage.show();
     }
 
+    /*
+    * Handles the event of clicking helpButton at BootScene.fxml
+    * Redirects to HelpScreen.fxml
+    * @param event An event representing helpButton been clicked
+    * */
     @FXML
     void handleHelp(ActionEvent event) throws IOException {
         if(event.getSource().equals(helpButton)){
