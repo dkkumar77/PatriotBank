@@ -29,6 +29,9 @@ public class Help {
     @FXML
     private JFXButton back;
 
+
+    private String message;
+
     Parent root;
     Stage stage;
     Scene scene;
@@ -48,6 +51,16 @@ public class Help {
 
     @FXML
     void handleSubmit(ActionEvent event) {
+
+        if(event.getSource().equals(submit)){
+            message = messageArea.toString();
+
+
+            /*
+            SEND MESSAGE TO 321 TEAM EMAIL
+             */
+
+        }
 
     }
 

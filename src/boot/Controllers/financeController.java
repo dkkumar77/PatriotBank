@@ -41,9 +41,10 @@ public class financeController {
         showBox("Withdraw");
     }
 
-    private void updateBalance() {
+    private void updateBalance(String username) {
         // Get balance from database
-        double bal = 1000.99;
+        double bal = new DATABASE().getBalance("username");
+
         NumberFormat money = NumberFormat.getInstance();
         balance.setText("$" + money.format(bal));
     }
@@ -57,7 +58,7 @@ public class financeController {
         stage.show();
     }
 
-    public void initialize() {
-        updateBalance();
+    public void initialize(String username) {
+        updateBalance(username);
     }
 }

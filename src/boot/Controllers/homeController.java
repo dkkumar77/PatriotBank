@@ -37,6 +37,7 @@ public class homeController {
         stackPane.getChildren().add((Node) finance);
     }
 
+
     @FXML
     void handleFinance(ActionEvent event) {
         finance.toFront();
@@ -52,7 +53,6 @@ public class homeController {
 
         if(event.getSource().equals(outButton)) {
             sceneChanger(PathModel.BootScene, event);
-
         }
 
         /*

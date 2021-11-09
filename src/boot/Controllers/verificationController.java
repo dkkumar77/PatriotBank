@@ -1,10 +1,19 @@
 package boot.Controllers;
 
+import boot.Model.PathModel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -24,20 +33,34 @@ public class verificationController {
 
     private String code;
 
+    int accountID;
+    String username;
+
+
     @FXML
-    void handleConfirm(ActionEvent event) {
+    void handleConfirm(ActionEvent event) throws IOException {
+        DATABASE e = new DATABASE();
+
+        if(event.getSource().equals(confirmButton)){
+            if(Integer.parseInt(codeField.getText()) == ((e.getCODE(username)))){
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(PathModel.HomeScreen));
+                Parent root = loader.load();
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
+
+
+        }
         if(codeField.getText() == null || codeField.getText().trim().isEmpty()) {
             // Error text
         }
     }
 
-   public void initialize() {
-        // Generate 4-digit code
-        Random randomizer = new Random();
-        code = String.format("%04d", randomizer.nextInt(10000));
-   }
 
-   private void sendEmail(String receiver) throws MessagingException {
+
+   private void sendEmail(String receiver, String code) throws MessagingException {
         // Email setup
         Properties properties = new Properties();
 
@@ -56,12 +79,12 @@ public class verificationController {
             }
         });
 
-        Message message = verificationMessage(session, receiver);
+        Message message = verificationMessage(session, receiver, code);
 
         Transport.send(message);
     }
 
-   private Message verificationMessage(Session session, String receiver) {
+   private Message verificationMessage(Session session, String receiver, String code) {
         try {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress("PatriotBankGMU@gmail.com"));
@@ -76,10 +99,12 @@ public class verificationController {
         return null;
     }
 
-   public void displayVerificationText(String email) {
+   public void displayVerificationText(String email, String code, int accountID, String username) {
+        this.username = username;
+        this.accountID = accountID;
         verificationText.setText("An email with a verification code has been sent to \n" + email);
         try {
-            sendEmail(email);
+            sendEmail(email, code);
         } catch (MessagingException e) {
             e.printStackTrace();
         }

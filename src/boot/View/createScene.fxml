@@ -8,20 +8,38 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: dark-blue;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boot.Controllers.createController">
+<AnchorPane prefHeight="539.0" prefWidth="816.0" style="-fx-background-color: #14151f;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boot.Controllers.createController">
    <children>
-      <Text layoutX="301.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patriot Bank" textAlignment="CENTER" wrappingWidth="150.55795288085938">
+      <Text fill="#006940" layoutX="337.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patriot Bank" textAlignment="CENTER" wrappingWidth="150.55795288085938">
          <font>
-            <Font size="20.0" />
+            <Font name="Ayuthaya" size="20.0" />
          </font></Text>
-      <JFXButton fx:id="cancelButton" layoutX="480.0" layoutY="417.0" onAction="#handleCancel" text="Cancel" />
-      <JFXButton fx:id="submitButton" layoutX="494.0" layoutY="343.0" onAction="#handleSubmit" text="Submit" />
-      <JFXTextField fx:id="userField" alignment="CENTER" labelFloat="true" layoutX="176.0" layoutY="104.0" promptText="Username" />
-      <JFXTextField fx:id="emailField" alignment="TOP_CENTER" labelFloat="true" layoutX="422.0" layoutY="104.0" promptText="Email" />
-      <JFXPasswordField fx:id="passField" alignment="CENTER" labelFloat="true" layoutX="422.0" layoutY="177.0" promptText="Password" />
-      <JFXPasswordField fx:id="passField2" alignment="CENTER" labelFloat="true" layoutX="422.0" layoutY="245.0" promptText="Verify Password" />
-      <JFXTextField fx:id="firstName" alignment="CENTER" labelFloat="true" layoutX="176.0" layoutY="177.0" promptText="First Name" />
-      <JFXTextField fx:id="lastName" alignment="CENTER" labelFloat="true" layoutX="176.0" layoutY="245.0" promptText="Last Name" />
-      <JFXDatePicker fx:id="dob" layoutX="301.0" layoutY="319.0" promptText="Date of Birth" />
+      <JFXButton fx:id="cancelButton" layoutX="516.0" layoutY="421.0" onAction="#handleCancel" text="Cancel" textFill="#006940" />
+      <JFXButton fx:id="submitButton" layoutX="530.0" layoutY="347.0" onAction="#handleSubmit" text="Submit" textFill="#006940" />
+      <JFXTextField fx:id="userField" alignment="CENTER" labelFloat="true" layoutX="212.0" layoutY="108.0" prefHeight="28.0" prefWidth="137.0" promptText="Username" styleClass="jfx-text-field" stylesheets="@style.css">
+         <font>
+            <Font name="Ayuthaya" size="13.0" />
+         </font></JFXTextField>
+      <JFXTextField fx:id="firstName" alignment="CENTER" labelFloat="true" layoutX="212.0" layoutY="181.0" prefHeight="28.0" prefWidth="137.0" promptText="First Name" styleClass="jfx-text-field" stylesheets="@style.css">
+         <font>
+            <Font name="Ayuthaya" size="13.0" />
+         </font></JFXTextField>
+      <JFXTextField fx:id="lastName" alignment="CENTER" labelFloat="true" layoutX="212.0" layoutY="249.0" prefHeight="28.0" prefWidth="137.0" promptText="Last Name" styleClass="jfx-text-field" stylesheets="@style.css">
+         <font>
+            <Font name="Ayuthaya" size="13.0" />
+         </font></JFXTextField>
+      <JFXTextField fx:id="emailField" alignment="TOP_CENTER" labelFloat="true" layoutX="458.0" layoutY="108.0" prefHeight="28.0" prefWidth="137.0" promptText="Email" styleClass="jfx-text-field" stylesheets="@style.css">
+         <font>
+            <Font name="Ayuthaya" size="13.0" />
+         </font></JFXTextField>
+      <JFXPasswordField fx:id="passField" alignment="CENTER" labelFloat="true" layoutX="458.0" layoutY="181.0" prefHeight="28.0" prefWidth="137.0" promptText="Password" styleClass="jfx-password-field" stylesheets="@style.css">
+         <font>
+            <Font name="Ayuthaya" size="13.0" />
+         </font></JFXPasswordField>
+      <JFXPasswordField fx:id="passField2" alignment="CENTER" labelFloat="true" layoutX="458.0" layoutY="249.0" prefHeight="28.0" prefWidth="137.0" promptText="Verify Password" styleClass="jfx-password-field" stylesheets="@style.css">
+         <font>
+            <Font name="Ayuthaya" size="13.0" />
+         </font></JFXPasswordField>
+      <JFXDatePicker fx:id="dob" layoutX="337.0" layoutY="323.0" opacity="0.46" promptText="Date of Birth" styleClass="jfx-date-picker" stylesheets="@style.css" />
    </children>
 </AnchorPane>

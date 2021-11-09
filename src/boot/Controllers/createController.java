@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import java.io.IOException;
+import java.util.Random;
 
 public class createController {
 
@@ -42,38 +43,34 @@ public class createController {
     private Stage stage;
     private Scene scene;
 
-    private String password;
-    private String password_verifyer;
-    private String email;
 
-    private String username;
     String[] data = new String[7];
+    String code;
 
+
+    String ACCOUNTID;
 
     @FXML
     void handleCancel(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(PathModel.BootScene));
-        root = loader.load();
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+
+        if(event.getSource().equals(cancelButton)) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(PathModel.BootScene));
+            root = loader.load();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setMaxWidth(816);
+            stage.setMinHeight(539);
+            stage.setScene(scene);
+            stage.show();
+
+
+        }
     }
 
     @FXML
     void handleSubmit(ActionEvent event) throws IOException {
 
         if (event.getSource().equals(submitButton)) {
-
-            /** NEED TO DELETE
-             */
-
-
-            /*
-
-
-             */
-
 
             data = getData();
 
@@ -82,11 +79,20 @@ public class createController {
                     if (emailVerifyer(data[1])) {
                         if (matchingPasswords(data[2], data[3])) {
 
-                                FXMLLoader loader = new FXMLLoader(getClass().getResource(PathModel.VerificationScene));
+
+                            DATABASE e = new DATABASE();
+                            Random randomizer = new Random();
+                            code = String.format("%04d", randomizer.nextInt(10000));
+
+                            randomizer = new Random();
+                            ACCOUNTID = String.format("%08d", randomizer.nextInt(10000));
+                            e.addUser(data[0],data[2],Integer.parseInt(ACCOUNTID),data[4] + " " +data[5],data[1],data[6], 0.0, Integer.parseInt(code) ,0);
+
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource(PathModel.VerificationScene));
                                 root = loader.load();
                                 verificationController controller = loader.getController();
-                                controller.displayVerificationText(data[1]);
-                                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                                controller.displayVerificationText(data[1], code, Integer.parseInt(ACCOUNTID), data[0]);
+                                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                                 scene = new Scene(root);
                                 stage.setScene(scene);
                                 stage.show();
@@ -98,14 +104,13 @@ public class createController {
                 }
 
             }
-
-
-
+            parameterClearer();
 
         }
+
     }
 
-    private void paramaterClearer(){
+    private void parameterClearer(){
         userField.setText("");
         passField.setText("");
         passField2.setText("");
@@ -115,9 +120,13 @@ public class createController {
 
     }
 
+
+
+
+
     private boolean emptyCheck() {
 
-        for(int i = 0; i< data.length; i++){
+        for(int i = 0; i< data.length-1; i++){
             if(data[i].isEmpty() == true){
                 return false;
 
@@ -128,7 +137,6 @@ public class createController {
 
     }
 
-
     private boolean usernameVerifyer(String a){
         if(data[0].matches("^[a-zA-Z0-9]*$")){
             return true;
@@ -136,29 +144,21 @@ public class createController {
 
         return false;
 
-
-
     }
 
     private boolean matchingPasswords(String a, String b){
-
         if(a.equals(b)){
             return true;
         }
-
         return false;
-
-
     }
 
     private String [] getData(){
 
         String [] array = new String[7];
-
         array[0] = userField.getText();
         array[1] = emailField.getText();
         array[2] = passField.getText();
-
         array[3] = passField2.getText();
 
         if(nameChecker(firstName.getText()) && nameChecker(lastName.getText())) {
@@ -166,10 +166,9 @@ public class createController {
             array[5] = lastName.getText();
         }
 
-        array[6] = dob.getValue().toString();
-
-
-
+        if(!dob.getValue().toString().isEmpty()) {
+            array[6] = dob.getValue().toString();
+        }
 
         return array;
 

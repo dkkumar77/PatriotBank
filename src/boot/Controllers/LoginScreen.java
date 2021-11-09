@@ -54,26 +54,23 @@ public class LoginScreen {
     @FXML
     void handleLogin(ActionEvent event) throws IOException {
 
-        /**
-         * DELETE
-         */
-
-
-        sceneChanger(PathModel.HomeScreen, event);
-
-
-
-        /*
-
-         */
         if(event.getSource().equals(loginButton)){
-            if((checkName() && checkPassword())) {
-
+            userError.toBack();
+            passError.toBack();
+            if((checkDatabase(userField.getText(), passField.getText()))) {
                 sceneChanger(PathModel.HomeScreen, event);
             }
 
-        }
 
+        }
+        else{
+
+            userError.toFront();
+            passError.toFront();
+            userError.setText("ERROR");
+            passError.setText("ERROR");
+
+        }
 
 
 
@@ -105,12 +102,23 @@ public class LoginScreen {
         if(event.getSource().equals(helpButton)){
             sceneChanger(PathModel.HelpScreen, event);
 
+
         }
 
     }
 
     @FXML
     void handlePassword(ActionEvent event) {
+
+    }
+
+    boolean checkDatabase(String username, String password){
+        DATABASE e = new DATABASE();
+
+        if(e.getPassword(username).equals(password)){
+            return true;
+        }
+        return false;
 
     }
 
