@@ -164,10 +164,10 @@ public class DATABASE {
         table.updateItem(updateItemSpec);
     }
 
-    public void updateSTATUS(String username, String status) {
+    public void updateSTATUS(String username, int status) {
         UpdateItemSpec updateItemSpec = new UpdateItemSpec().withPrimaryKey("username", username)
                 .withUpdateExpression("set STATUS = :l")
-                .withValueMap(new ValueMap().withString(":l", status))
+                .withValueMap(new ValueMap().withInt(":l", status))
                 .withReturnValues(ReturnValue.UPDATED_NEW);
         table.updateItem(updateItemSpec);
     }
