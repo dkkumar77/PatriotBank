@@ -20,6 +20,7 @@ import javafx.fxml.FXML;
 
 public class Help {
 
+    /*Testing comment123*/
     @FXML
     private JFXTextArea messageArea;
 

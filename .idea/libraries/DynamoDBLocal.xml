@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="DynamoDBLocal">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../Downloads/dynamodb_local_latest (3)/DynamoDBLocal.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/PatriotBankLibraries/dynamodb_local_latest/DynamoDBLocal.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
