@@ -34,7 +34,7 @@ public class DATABASE {
 
     public static void main(String[] args) {
         DATABASE e = new DATABASE();
-        e.addUser("dkkumar77","password", 123123123,"Deepak Kumar", "dk.kumar77@yahoo.com", "09-09-2000", 10.0, 1239, 0);
+        e.addUser("dkkumar77", "password", 123123123, "Deepak Kumar", "dk.kumar77@yahoo.com", "09-09-2000", 10.0, 1239, 0);
 
     }
 
@@ -48,7 +48,7 @@ public class DATABASE {
 
     }
 
-    public void addUser(String username, String password, int accountID, String fullName, String email, String dob, Double balance, int code, int STATUS){
+    public void addUser(String username, String password, int accountID, String fullName, String email, String dob, Double balance, int code, int STATUS) {
         try {
             PutItemOutcome outcome = table
                     .putItem(new Item().withPrimaryKey("username", username)
@@ -56,11 +56,10 @@ public class DATABASE {
                             .withInt("accountID", accountID)
                             .withString("name", fullName)
                             .withString("email", email)
-                            .withString("dob",dob)
-                            .withDouble("balance",0.0)
+                            .withString("dob", dob)
+                            .withDouble("balance", 0.0)
                             .withInt("CODE", code)
                             .withInt("STATUS", STATUS));
-
 
 
         } catch (Exception e) {
@@ -71,6 +70,7 @@ public class DATABASE {
 
     /**
      * GETTER METHODS
+     *
      * @param username
      * @return
      */
@@ -83,7 +83,6 @@ public class DATABASE {
     }
 
 
-
     public int getAccountID(String username) {
         GetItemSpec spec = new GetItemSpec().withPrimaryKey("username", username);
         Item outcome = table.getItem(spec);
@@ -91,7 +90,6 @@ public class DATABASE {
 
 
     }
-
 
 
     public String getEmail(String username) {
@@ -102,14 +100,12 @@ public class DATABASE {
     }
 
 
-
     public double getBalance(String username) {
         GetItemSpec spec = new GetItemSpec().withPrimaryKey("username", username);
         Item outcome = table.getItem(spec);
         return outcome.getDouble("balance");
 
     }
-
 
 
     public String getDOB(String username) {
@@ -128,7 +124,6 @@ public class DATABASE {
     }
 
 
-
     public int getCODE(String username) {
         GetItemSpec spec = new GetItemSpec().withPrimaryKey("username", username);
         Item outcome = table.getItem(spec);
@@ -145,9 +140,43 @@ public class DATABASE {
     }
 
 
+    public void updateBalance(String username, double amount) {
+        UpdateItemSpec updateItemSpec = new UpdateItemSpec().withPrimaryKey("username", username)
+                .withUpdateExpression("set balance = :l")
+                .withValueMap(new ValueMap().withString(":l", Double.toString(amount)))
+                .withReturnValues(ReturnValue.UPDATED_NEW);
+        table.updateItem(updateItemSpec);
+    }
+
+    public void updatePassword(String username, String password) {
+        UpdateItemSpec updateItemSpec = new UpdateItemSpec().withPrimaryKey("username", username)
+                .withUpdateExpression("set password = :l")
+                .withValueMap(new ValueMap().withString(":l", password))
+                .withReturnValues(ReturnValue.UPDATED_NEW);
+        table.updateItem(updateItemSpec);
+    }
+
+    public void updateEmail(String username, String email) {
+        UpdateItemSpec updateItemSpec = new UpdateItemSpec().withPrimaryKey("username", username)
+                .withUpdateExpression("set email = :l")
+                .withValueMap(new ValueMap().withString(":l", email))
+                .withReturnValues(ReturnValue.UPDATED_NEW);
+        table.updateItem(updateItemSpec);
+    }
+
+    public void updateSTATUS(String username, String status) {
+        UpdateItemSpec updateItemSpec = new UpdateItemSpec().withPrimaryKey("username", username)
+                .withUpdateExpression("set STATUS = :l")
+                .withValueMap(new ValueMap().withString(":l", status))
+                .withReturnValues(ReturnValue.UPDATED_NEW);
+        table.updateItem(updateItemSpec);
+    }
+
+
+    }
 
 
 
 
-}
+
 
