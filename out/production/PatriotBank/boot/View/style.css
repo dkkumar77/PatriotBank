@@ -1,0 +1,23 @@
+.jfx-password-field {
+        -fx-text-fill: #006940;
+        -fx-prompt-text-fill: #006940;
+        -jfx-focus-color: #006940;
+        -jfx-unfocus-color: #006940;
+
+
+
+}
+
+.jfx-text-field {
+    -fx-text-fill: #006940;
+    -fx-prompt-text-fill: #006940;
+    -jfx-focus-color: #006940;
+    -jfx-unfocus-color: #006940;
+}
+
+.jfx-date-picker {
+    -fx-text-fill: #00000;
+    -fx-prompt-text-fill: #00000;
+    -jfx-focus-color: #00000;
+    -jfx-unfocus-color: #00000;
+}
