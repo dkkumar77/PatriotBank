@@ -58,7 +58,14 @@ public class LoginScreen {
             userError.toBack();
             passError.toBack();
             if((checkDatabase(userField.getText(), passField.getText()))) {
-                sceneChanger(PathModel.HomeScreen, event);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(PathModel.HomeScreen));
+                root = loader.load();
+                homeController controller = loader.getController();
+                controller.passData(userField.getText());
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
             }
 
 
@@ -125,6 +132,7 @@ public class LoginScreen {
     private void sceneChanger(String path, ActionEvent event) throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
         root = loader.load();
+
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

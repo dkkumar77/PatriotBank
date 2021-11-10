@@ -29,12 +29,17 @@ public class homeController {
     private StackPane stackPane;
 
     AnchorPane finance, settings;
-    
+
+    String username;
+
+
     public void initialize() throws IOException {
         finance = FXMLLoader.load(getClass().getResource(PathModel.FinanceScene));
         settings = FXMLLoader.load(getClass().getResource(PathModel.SettingsScreen));
         stackPane.getChildren().add((Node) settings);
         stackPane.getChildren().add((Node) finance);
+
+
     }
 
 
@@ -44,8 +49,22 @@ public class homeController {
     }
 
     @FXML
-    void handleSettings(ActionEvent event) {
-        settings.toFront();
+    void handleSettings(ActionEvent event) throws IOException {
+        if(event.getSource().equals(settingsButton)) {
+            Parent root;
+            Stage stage;
+            Scene scene;
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(PathModel.SettingsScreen));
+            root = loader.load();
+            Settings controller = loader.getController();
+            controller.setAll(username);
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+
     }
 
     @FXML
@@ -77,4 +96,8 @@ public class homeController {
         stage.show();
     }
 
+    public void passData(String username) {
+
+        this.username = username;
+    }
 }

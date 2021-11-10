@@ -115,6 +115,7 @@ public class createController {
         passField.setText("");
         passField2.setText("");
         emailField.setText("");
+
         firstName.setText("");
         lastName.setText("");
 
