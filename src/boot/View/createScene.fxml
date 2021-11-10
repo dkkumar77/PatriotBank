@@ -16,7 +16,7 @@
          </font></Text>
       <JFXButton fx:id="cancelButton" layoutX="516.0" layoutY="421.0" onAction="#handleCancel" text="Cancel" textFill="#006940" />
       <JFXButton fx:id="submitButton" layoutX="530.0" layoutY="347.0" onAction="#handleSubmit" text="Submit" textFill="#006940" />
-      <JFXTextField fx:id="userField" alignment="CENTER" labelFloat="true" layoutX="212.0" layoutY="108.0" prefHeight="28.0" prefWidth="137.0" promptText="Username" styleClass="jfx-text-field" stylesheets="@style.css">
+      <JFXTextField fx:id="usernameField" alignment="CENTER" labelFloat="true" layoutX="212.0" layoutY="108.0" prefHeight="28.0" prefWidth="137.0" promptText="Username" styleClass="jfx-text-field" stylesheets="@style.css">
          <font>
             <Font name="Ayuthaya" size="13.0" />
          </font></JFXTextField>
@@ -32,11 +32,11 @@
          <font>
             <Font name="Ayuthaya" size="13.0" />
          </font></JFXTextField>
-      <JFXPasswordField fx:id="passField" alignment="CENTER" labelFloat="true" layoutX="458.0" layoutY="181.0" prefHeight="28.0" prefWidth="137.0" promptText="Password" styleClass="jfx-password-field" stylesheets="@style.css">
+      <JFXPasswordField fx:id="passwordField" alignment="CENTER" labelFloat="true" layoutX="458.0" layoutY="181.0" prefHeight="28.0" prefWidth="137.0" promptText="Password" styleClass="jfx-password-field" stylesheets="@style.css">
          <font>
             <Font name="Ayuthaya" size="13.0" />
          </font></JFXPasswordField>
-      <JFXPasswordField fx:id="passField2" alignment="CENTER" labelFloat="true" layoutX="458.0" layoutY="249.0" prefHeight="28.0" prefWidth="137.0" promptText="Verify Password" styleClass="jfx-password-field" stylesheets="@style.css">
+      <JFXPasswordField fx:id="passwordField2" alignment="CENTER" labelFloat="true" layoutX="458.0" layoutY="249.0" prefHeight="28.0" prefWidth="137.0" promptText="Verify Password" styleClass="jfx-password-field" stylesheets="@style.css">
          <font>
             <Font name="Ayuthaya" size="13.0" />
          </font></JFXPasswordField>

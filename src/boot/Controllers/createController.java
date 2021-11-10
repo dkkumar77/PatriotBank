@@ -27,14 +27,14 @@ public class createController {
     private JFXButton submitButton;
 
     @FXML
-    private JFXTextField userField, firstName, lastName;
+    private JFXTextField usernameField, firstName, lastName;
 
 
     @FXML
     private JFXTextField emailField;
 
     @FXML
-    private JFXPasswordField passField, passField2;
+    private JFXPasswordField passwordField, passwordField2;
 
     @FXML
     private JFXDatePicker dob;
@@ -111,9 +111,9 @@ public class createController {
     }
 
     private void parameterClearer(){
-        userField.setText("");
-        passField.setText("");
-        passField2.setText("");
+        usernameField.setText("");
+        passwordField.setText("");
+        passwordField2.setText("");
         emailField.setText("");
 
         firstName.setText("");
@@ -157,10 +157,10 @@ public class createController {
     private String [] getData(){
 
         String [] array = new String[7];
-        array[0] = userField.getText();
+        array[0] = usernameField.getText();
         array[1] = emailField.getText();
-        array[2] = passField.getText();
-        array[3] = passField2.getText();
+        array[2] = passwordField.getText();
+        array[3] = passwordField2.getText();
 
         if(nameChecker(firstName.getText()) && nameChecker(lastName.getText())) {
             array[4] = firstName.getText();
