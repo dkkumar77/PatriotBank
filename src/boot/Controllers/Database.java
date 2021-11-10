@@ -23,6 +23,7 @@ import com.amazonaws.services.dynamodbv2.document.*;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.document.DynamoDB;
 import com.amazonaws.services.dynamodbv2.document.Table;
+import com.amazonaws.services.dynamodbv2.document.spec.DeleteItemSpec;
 import com.amazonaws.services.dynamodbv2.document.spec.GetItemSpec;
 import com.amazonaws.services.dynamodbv2.document.spec.UpdateItemSpec;
 import com.amazonaws.services.dynamodbv2.document.utils.ValueMap;
@@ -185,6 +186,11 @@ public class Database {
 
 
 
+    }
+
+    public void deleteItem(String username){
+        DeleteItemSpec deleteItemSpec = new DeleteItemSpec().withPrimaryKey("username", username);
+        table.deleteItem(deleteItemSpec);
     }
 
 
