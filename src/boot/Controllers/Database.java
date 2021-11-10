@@ -16,8 +16,6 @@ package boot.Controllers;
 
 
 
-import java.util.Arrays;
-import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import com.amazonaws.services.dynamodbv2.document.*;
@@ -30,10 +28,10 @@ import com.amazonaws.services.dynamodbv2.document.utils.ValueMap;
 import com.amazonaws.services.dynamodbv2.model.*;
 
 
-public class DATABASE {
+public class Database {
 
     public static void main(String[] args) {
-        DATABASE e = new DATABASE();
+        Database e = new Database();
         e.addUser("dkkumar77", "password", 123123123, "Deepak Kumar", "dk.kumar77@yahoo.com", "09-09-2000", 10.0, 1239, 0);
 
     }
@@ -41,7 +39,7 @@ public class DATABASE {
     Table table;
 
 
-    public DATABASE() {
+    public Database() {
         AmazonDynamoDB client = AmazonDynamoDBClientBuilder.standard().withRegion(Regions.US_EAST_1).build();
         DynamoDB dynamoDB = new DynamoDB(client);
         this.table = dynamoDB.getTable("data");

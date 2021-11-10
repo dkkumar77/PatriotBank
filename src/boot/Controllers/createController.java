@@ -80,7 +80,7 @@ public class createController {
                         if (matchingPasswords(data[2], data[3])) {
 
 
-                            DATABASE e = new DATABASE();
+                            Database e = new Database();
                             Random randomizer = new Random();
                             code = String.format("%04d", randomizer.nextInt(10000));
 

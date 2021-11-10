@@ -120,7 +120,7 @@ public class LoginScreen {
     }
 
     boolean checkDatabase(String username, String password){
-        DATABASE e = new DATABASE();
+        Database e = new Database();
 
         if(e.getPassword(username).equals(password)){
             return true;

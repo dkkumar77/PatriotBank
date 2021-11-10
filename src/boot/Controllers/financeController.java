@@ -43,7 +43,7 @@ public class financeController {
 
     private void updateBalance(String username) {
         // Get balance from database
-        double bal = new DATABASE().getBalance("username");
+        double bal = new Database().getBalance("username");
 
         NumberFormat money = NumberFormat.getInstance();
         balance.setText("$" + money.format(bal));

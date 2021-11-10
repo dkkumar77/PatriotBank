@@ -41,7 +41,9 @@ public class Settings {
     @FXML
     private AnchorPane info, change;
 
-    DATABASE e;
+    Database e;
+
+    String user;
 
     @FXML
     void handleAccountInfo(ActionEvent event) {
@@ -66,7 +68,9 @@ public class Settings {
 
     @FXML
     void handleBack(ActionEvent event){
-        if(event.getSource().equals(event));{
+        if(event.getSource().equals(event));
+        {
+
 
 
         }
@@ -79,17 +83,38 @@ public class Settings {
     }
 
     public void setAll(String user ){
-        DATABASE e = new DATABASE();
+        Database e = new Database();
+        this.user = user;
+
         accountID.setText(String.valueOf(e.getAccountID(user)));
         username.setText(user);
         email.setText(e.getEmail(user));
         dob.setText(e.getDOB(user));
-
-
 
         info.toBack();
         info.toBack();
 
     }
 
+    public void handleSubmit(ActionEvent actionEvent) {
+        Database e = new Database();
+
+        if(oldpass.getText().equals(e.getPassword(user))){
+            if(newPass.getText().equals(confirmNewPassword.getText())){
+
+                e.updatePassword(user,newPass.getText());
+
+                newPass.setText("");
+                confirmNewPassword.setText("");
+                oldpass.setText("");
+
+
+
+
+
+
+
+            }
+        }
+    }
 }

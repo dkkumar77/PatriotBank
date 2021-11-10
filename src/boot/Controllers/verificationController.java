@@ -10,7 +10,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -39,7 +38,7 @@ public class verificationController {
 
     @FXML
     void handleConfirm(ActionEvent event) throws IOException {
-        DATABASE e = new DATABASE();
+        Database e = new Database();
 
         if(event.getSource().equals(confirmButton)){
             if(Integer.parseInt(codeField.getText()) == ((e.getCODE(username))))
