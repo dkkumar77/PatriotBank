@@ -43,7 +43,6 @@ public class verificationController {
         if(event.getSource().equals(confirmButton)){
             if(Integer.parseInt(codeField.getText()) == ((e.getCODE(username))))
             {
-                e.updateSTATUS(username, 1);
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(PathModel.HomeScreen));
                 Parent root = loader.load();
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

@@ -26,6 +26,11 @@
             <Insets />
          </opaqueInsets>
       </JFXTextField>
+      <JFXPasswordField fx:id="passField" focusColor="#00694000" layoutX="295.0" layoutY="220.0" onAction="#handlePassword" prefHeight="30.0" prefWidth="245.0" promptText="Password" style="-fx-prompt-text-fill: #dcdcdc; -fx-background-color: #232b32; -fx-text-inner-color: #dcdcdc;" unFocusColor="#4d4d4d00">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </JFXPasswordField>
       <JFXButton fx:id="loginButton" layoutX="260.0" layoutY="300.0" onAction="#handleLogin" prefHeight="40.0" prefWidth="280.0" style="-fx-background-color: #006940;" text="Log In" textAlignment="CENTER" textFill="GAINSBORO">
          <font>
             <Font size="14.0" />
@@ -35,10 +40,6 @@
             <Font size="14.0" />
          </font></JFXButton>
       <JFXButton fx:id="helpButton" layoutX="725.0" layoutY="450.0" onAction="#handleHelp" text="Help" textFill="WHITE" />
-      <JFXPasswordField fx:id="passField" focusColor="#00694000" layoutX="295.0" layoutY="220.0" onAction="#handlePassword" prefHeight="30.0" prefWidth="245.0" promptText="Password" style="-fx-prompt-text-fill: #dcdcdc; -fx-background-color: #232b32; -fx-text-inner-color: #dcdcdc;" unFocusColor="#4d4d4d00">
-         <font>
-            <Font size="13.0" />
-         </font></JFXPasswordField>
       <Text fill="#006940" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PATRIOT BANK" textAlignment="CENTER" wrappingWidth="800.0">
          <font>
             <Font name="System Bold" size="48.0" />

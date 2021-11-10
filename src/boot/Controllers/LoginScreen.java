@@ -54,28 +54,42 @@ public class LoginScreen {
     @FXML
     void handleLogin(ActionEvent event) throws IOException {
 
-        if(event.getSource().equals(loginButton)){
+        if(event.getSource().equals(loginButton)) {
             userError.toBack();
             passError.toBack();
-            if((checkDatabase(userField.getText(), passField.getText()))) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource(PathModel.HomeScreen));
-                root = loader.load();
-                homeController controller = loader.getController();
-                controller.passData(userField.getText());
-                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
+            if (userField.getText().equals("") || passField.getText().equals("")) {
+                userField.setText("");
+                passField.setText("");
+                userError.setText("Empty Username or Password");
+                userError.toFront();
+
+            }
+            else{
+                if ((checkDatabase(userField.getText(), passField.getText()))) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource(PathModel.HomeScreen));
+                    root = loader.load();
+                    homeController controller = loader.getController();
+                    controller.passData(userField.getText());
+                    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                }
+                else{
+
+                    userError.toFront();
+                    passError.toFront();
+                    userError.setText("ERROR");
+                    passError.setText("ERROR");
+
+                }
+
             }
 
 
-        }
-        else{
 
-            userError.toFront();
-            passError.toFront();
-            userError.setText("ERROR");
-            passError.setText("ERROR");
+
+
 
         }
 
@@ -120,7 +134,9 @@ public class LoginScreen {
     }
 
     boolean checkDatabase(String username, String password){
+
         Database e = new Database();
+
 
         if(e.getPassword(username).equals(password)){
             return true;

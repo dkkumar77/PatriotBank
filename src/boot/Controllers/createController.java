@@ -85,7 +85,7 @@ public class createController {
                             code = String.format("%04d", randomizer.nextInt(10000));
 
                             randomizer = new Random();
-                            ACCOUNTID = String.format("%08d", randomizer.nextInt(10000));
+                            ACCOUNTID = "1" +String.format("%08d", randomizer.nextInt(10000));
                             e.addUser(data[0],data[2],Integer.parseInt(ACCOUNTID),data[4] + " " +data[5],data[1],data[6], 0.0, Integer.parseInt(code) ,0);
 
                             FXMLLoader loader = new FXMLLoader(getClass().getResource(PathModel.VerificationScene));
@@ -139,6 +139,7 @@ public class createController {
     }
 
     private boolean usernameVerifyer(String a){
+
         if(data[0].matches("^[a-zA-Z0-9]*$")){
             return true;
         }
@@ -186,7 +187,10 @@ public class createController {
     }
 
     private boolean emailVerifyer(String email) {
-        try{
+        if(!data[1].toLowerCase().contains("@gmu.edu")){
+            return false;
+        }
+            try{
             InternetAddress e = new InternetAddress(email);
             e.validate();;
         } catch (AddressException e) {

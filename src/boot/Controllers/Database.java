@@ -18,6 +18,7 @@ package boot.Controllers;
 
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.document.*;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.document.DynamoDB;
@@ -30,11 +31,6 @@ import com.amazonaws.services.dynamodbv2.model.*;
 
 public class Database {
 
-    public static void main(String[] args) {
-        Database e = new Database();
-        e.addUser("dkkumar77", "password", 123123123, "Deepak Kumar", "dk.kumar77@yahoo.com", "09-09-2000", 10.0, 1239, 0);
-
-    }
 
     Table table;
 
@@ -73,6 +69,7 @@ public class Database {
      * @return
      */
     public String getName(String username) {
+
         GetItemSpec spec = new GetItemSpec().withPrimaryKey("username", username);
         Item outcome = table.getItem(spec);
         System.out.println(outcome.getString("name"));
@@ -169,6 +166,35 @@ public class Database {
                 .withReturnValues(ReturnValue.UPDATED_NEW);
         table.updateItem(updateItemSpec);
     }
+
+    public boolean checkDatabase(String username){
+
+        AmazonDynamoDB client = AmazonDynamoDBClientBuilder.standard().withRegion(Regions.US_EAST_1).build();
+        DynamoDB dynamoDB = new DynamoDB(client);
+        this.table = dynamoDB.getTable("data");
+        DynamoDBMapper mapper = new DynamoDBMapper(client);
+        Item item = mapper.load(Item.class, username);
+        if(item == null){
+            return false;
+
+        }
+        else{
+            return true;
+
+        }
+
+
+
+    }
+
+
+    public static void main(String[] args) {
+        Database e = new Database();
+
+        System.out.println(e.checkDatabase("dkumar9"));
+
+    }
+
 
 
     }
