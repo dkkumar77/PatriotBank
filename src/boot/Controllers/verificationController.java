@@ -69,8 +69,8 @@ public class verificationController {
         properties.put("mail.smtp.host", "smtp.gmail.com");
         properties.put("mail.smtp.port", "587");
 
-        String sender = "PatriotBankGMU@gmail.com";
-        String senderPassword = "TfcVgy206987";
+        String sender = "cs321team6@gmail.com";
+        String senderPassword = "teamsixproject1!";
 
         Session session = Session.getInstance(properties, new Authenticator() {
             @Override
@@ -87,7 +87,7 @@ public class verificationController {
    private Message verificationMessage(Session session, String receiver, String code) {
         try {
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("PatriotBankGMU@gmail.com"));
+            message.setFrom(new InternetAddress("cs321team6@gmail.com"));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(receiver));
             message.setSubject("Patriot Bank Verification");
             message.setText("Hello, here is your 4-digit verification code. \n" + code);

@@ -41,6 +41,10 @@ public class Settings {
     @FXML
     private AnchorPane info, change;
 
+
+    @FXML
+    private JFXTextField password;
+
     Database e;
 
     String user;
@@ -71,14 +75,7 @@ public class Settings {
         if(event.getSource().equals(event));
         {
 
-
-
         }
-
-
-    }
-    @FXML
-    void handleCloseAccount(ActionEvent event) {
 
     }
 

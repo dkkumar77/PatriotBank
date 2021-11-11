@@ -1,5 +1,6 @@
 package boot.Controllers;
 
+import boot.BCrypt.BCrypt;
 import boot.Model.PathModel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
@@ -54,6 +55,8 @@ public class LoginScreen {
     @FXML
     void handleLogin(ActionEvent event) throws IOException {
 
+        BCrypt b = new BCrypt();
+
         if(event.getSource().equals(loginButton)) {
             userError.toBack();
             passError.toBack();
@@ -65,7 +68,7 @@ public class LoginScreen {
 
             }
             else{
-                if ((checkDatabase(userField.getText(), passField.getText()))) {
+                if ((checkDatabase(userField.getText().toLowerCase(), b.hashPass(passField.getText())))) {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource(PathModel.HomeScreen));
                     root = loader.load();
                     homeController controller = loader.getController();

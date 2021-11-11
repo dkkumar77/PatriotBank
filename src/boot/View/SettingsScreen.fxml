@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,17 +15,17 @@
             <JFXTextField fx:id="oldpass" alignment="CENTER" focusColor="#3a4b7c" labelFloat="true" layoutX="26.0" layoutY="23.0" promptText="Old Password" styleClass="jfx-text-field" stylesheets="@style.css" unFocusColor="#257944" />
             <JFXTextField fx:id="newPass" alignment="CENTER" focusColor="#3a4b7c" labelFloat="true" layoutX="28.0" layoutY="79.0" promptText="New Password" styleClass="jfx-text-field" stylesheets="@style.css" unFocusColor="#257944" />
             <JFXTextField fx:id="confirmNewPassword" alignment="CENTER" focusColor="#3a4b7c" labelFloat="true" layoutX="23.0" layoutY="141.0" promptText="New Password" styleClass="jfx-text-field" stylesheets="@style.css" unFocusColor="#257944" />
+            <JFXButton fx:id="submit" layoutX="132.0" layoutY="173.0" onAction="#handleSubmit" prefHeight="27.0" prefWidth="68.0" text="Submit" textFill="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="info" layoutX="323.0" layoutY="66.0" prefHeight="200.0" prefWidth="200.0">
          <children>
-            <JFXTextField fx:id="accountID" alignment="CENTER" editable="false" focusColor="#3a4b7c" layoutX="20.0" layoutY="26.0" styleClass="jfx-text-field" stylesheets="@style.css" unFocusColor="#257944" />
-            <JFXTextField fx:id="username" alignment="CENTER" editable="false" focusColor="#3a4b7c" layoutX="24.0" layoutY="80.0" styleClass="jfx-text-field" stylesheets="@style.css" unFocusColor="#257944" />
-            <JFXTextField fx:id="email" alignment="CENTER" editable="false" focusColor="#3a4b7c" layoutX="20.0" layoutY="142.0" styleClass="jfx-text-field" stylesheets="@style.css" unFocusColor="#257944" />
-            <JFXTextField fx:id="dob" alignment="CENTER" editable="false" focusColor="#3a4b7c" layoutX="21.0" layoutY="187.0" styleClass="jfx-text-field" stylesheets="@style.css" unFocusColor="#257944" />
+            <JFXTextField fx:id="accountID" alignment="CENTER" editable="false" focusColor="#3a4b7c" labelFloat="true" layoutX="20.0" layoutY="26.0" promptText="Account ID" styleClass="jfx-text-field" stylesheets="@style.css" unFocusColor="#257944" />
+            <JFXTextField fx:id="username" alignment="CENTER" editable="false" focusColor="#3a4b7c" labelFloat="true" layoutX="24.0" layoutY="80.0" promptText="Username" styleClass="jfx-text-field" stylesheets="@style.css" unFocusColor="#257944" />
+            <JFXTextField fx:id="email" alignment="CENTER" editable="false" focusColor="#3a4b7c" labelFloat="true" layoutX="20.0" layoutY="142.0" promptText="Email" styleClass="jfx-text-field" stylesheets="@style.css" unFocusColor="#257944" />
+            <JFXTextField fx:id="dob" alignment="CENTER" editable="false" focusColor="#3a4b7c" labelFloat="true" layoutX="21.0" layoutY="187.0" promptText="Date of Birth" styleClass="jfx-text-field" stylesheets="@style.css" unFocusColor="#257944" />
          </children>
       </AnchorPane>
-      <JFXButton layoutX="592.0" layoutY="380.0" text="Submit" textFill="WHITE" />
       <AnchorPane prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #1d1e2a;">
          <children>
             <JFXButton fx:id="changePass" layoutX="80.0" layoutY="103.0" onAction="#handleChangePassword" text="Change Password" textFill="WHITE" />
@@ -35,6 +37,13 @@
                </font>
             </Label>
             <JFXButton layoutX="14.0" layoutY="10.0" text="Back" textFill="WHITE" />
+            <AnchorPane layoutX="332.0" layoutY="85.0" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <JFXTextArea editable="false" layoutY="-2.0" prefHeight="71.0" prefWidth="200.0" text="Type in your password in order to delete your account. Deleted accounts can not be restored." unFocusColor="#1e1e22" />
+                  <JFXPasswordField fx:id="passwordForClose" alignment="CENTER" layoutX="28.0" layoutY="87.0" promptText="Password" />
+                  <JFXButton fx:id="submitClose" layoutX="131.0" layoutY="131.0" text="Submit" textFill="WHITE" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>

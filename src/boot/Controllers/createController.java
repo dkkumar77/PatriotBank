@@ -1,5 +1,6 @@
 package boot.Controllers;
 
+import boot.BCrypt.BCrypt;
 import boot.Model.PathModel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
@@ -74,6 +75,9 @@ public class createController {
 
             data = getData();
 
+
+            BCrypt  b = new BCrypt();
+
             if(emptyCheck()) {
                 if (usernameVerifyer(data[0])) {
                     if (emailVerifyer(data[1])) {
@@ -86,16 +90,16 @@ public class createController {
 
                             randomizer = new Random();
                             ACCOUNTID = "1" +String.format("%08d", randomizer.nextInt(10000));
-                            e.addUser(data[0],data[2],Integer.parseInt(ACCOUNTID),data[4] + " " +data[5],data[1],data[6], 0.0, Integer.parseInt(code) ,0);
+                            e.addUser(data[0].toLowerCase(),b.hashPass(data[2]),Integer.parseInt(ACCOUNTID),data[4] + " " +data[5],data[1],data[6], 0.0, Integer.parseInt(code) ,0);
 
                             FXMLLoader loader = new FXMLLoader(getClass().getResource(PathModel.VerificationScene));
-                                root = loader.load();
-                                verificationController controller = loader.getController();
-                                controller.displayVerificationText(data[1], code, Integer.parseInt(ACCOUNTID), data[0]);
-                                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                                scene = new Scene(root);
-                                stage.setScene(scene);
-                                stage.show();
+                            root = loader.load();
+                            verificationController controller = loader.getController();
+                            controller.displayVerificationText(data[1], code, Integer.parseInt(ACCOUNTID), data[0]);
+                            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                            scene = new Scene(root);
+                            stage.setScene(scene);
+                            stage.show();
 
 
                         }
@@ -188,11 +192,12 @@ public class createController {
 
     }
 
+
     private boolean emailVerifyer(String email) {
         if(!data[1].toLowerCase().contains("@gmu.edu")){
             return false;
         }
-            try{
+        try{
             InternetAddress e = new InternetAddress(email);
             e.validate();;
         } catch (AddressException e) {
