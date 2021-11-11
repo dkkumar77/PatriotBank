@@ -774,4 +774,14 @@ public class BCrypt {
 			ret |= hashed_bytes[i] ^ try_bytes[i];
 		return ret == 0;
 	}
+
+	public String hashPass(String e){
+		String g = encode_base64(e.getBytes(),e.length());
+		return g;
+	}
+
+	public String dehashPass(String e){
+		byte[] g = decode_base64(e, e.length());
+		return new String(g);
+	}
 }
