@@ -39,7 +39,7 @@ public class Settings {
     private JFXTextField dob;
 
     @FXML
-    private AnchorPane info, change;
+    private AnchorPane info, change, delete;
 
 
     @FXML
@@ -54,16 +54,25 @@ public class Settings {
 
         if(event.getSource().equals(accountInfo)){
             change.toBack();
+            delete.toBack();
+            clearPreexistingParameters();
+
             info.toFront();
 
 
         }
     }
 
+
+    public void clearPreexistingParameters() {
+        oldpass.setText("");
+    }
+
     @FXML
     void handleChangePassword(ActionEvent event) {
         if(event.getSource().equals(changePass)){
             info.toBack();
+            delete.toBack();
             change.toFront();
         }
 
@@ -89,7 +98,25 @@ public class Settings {
         dob.setText(e.getDOB(user));
 
         info.toBack();
-        info.toBack();
+        change.toBack();
+        delete.toBack();
+
+    }
+
+    @FXML
+    public void handleCloseAccount(ActionEvent event){
+        if(event.getSource().equals(closeAccount)) {
+            info.toBack();
+            change.toBack();
+            delete.toFront();
+
+        }
+
+    }
+
+
+    @FXML
+    public void handleSubmitClose(ActionEvent event){
 
     }
 
