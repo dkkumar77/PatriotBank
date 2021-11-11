@@ -127,7 +127,25 @@ public class Settings {
 
     @FXML
     public void handleSubmitClose(ActionEvent event) throws IOException{
+        Database e = new Database();
+        BCrypt b = new BCrypt();
+        if(event.getSource().equals(submitClose)){
 
+            if(e.getPassword(username.getText()).equals(b.hashPass(passwordForClose.getText()))){
+                e.deleteItem(username.getText());
+
+                Stage stage;
+                Parent root;
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(PathModel.BootScene));
+                root = loader.load();
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+
+            }
+        }
     }
 
     @FXML
