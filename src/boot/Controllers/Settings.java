@@ -1,10 +1,20 @@
 package boot.Controllers;
 
+import boot.BCrypt.BCrypt;
+import boot.Model.PathModel;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class Settings {
 
@@ -24,7 +34,7 @@ public class Settings {
     private JFXButton accountInfo;
 
     @FXML
-    private JFXButton closeAccount;
+    private JFXButton closeAccount, submitClose;
 
     @FXML
     private JFXTextField accountID;
@@ -43,7 +53,7 @@ public class Settings {
 
 
     @FXML
-    private JFXTextField password;
+    private JFXPasswordField passwordForClose;
 
     Database e;
 
@@ -116,11 +126,12 @@ public class Settings {
 
 
     @FXML
-    public void handleSubmitClose(ActionEvent event){
+    public void handleSubmitClose(ActionEvent event) throws IOException{
 
     }
 
-    public void handleSubmit(ActionEvent actionEvent) {
+    @FXML
+    public void handleSubmit(ActionEvent actionEvent) throws IOException {
         Database e = new Database();
 
         if(oldpass.getText().equals(e.getPassword(user))){
@@ -131,9 +142,6 @@ public class Settings {
                 newPass.setText("");
                 confirmNewPassword.setText("");
                 oldpass.setText("");
-
-
-
 
 
 
