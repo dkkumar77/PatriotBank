@@ -18,7 +18,9 @@ import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-
+/**
+ * Holds methods to handle events at verificationScene.fxml
+ * */
 public class verificationController {
 
     @FXML
@@ -32,15 +34,16 @@ public class verificationController {
 
     private String code;
 
-    int accountID;
-    String username;
+    /*changed from no access modifier to public access modifier*/
+    public int accountID;
+    public String username;
 
-    /*
+    /**
      * Handles the event of clicking confirmButton at verificationScene.fxml
      * @param event An event representing confirmButton been clicked
      * */
     @FXML
-    void handleConfirm(ActionEvent event) throws IOException {
+    public void handleConfirm(ActionEvent event) throws IOException {  /*changed from no access modifier to public access modifier*/
         Database e = new Database();
 
         if(event.getSource().equals(confirmButton)){
@@ -53,16 +56,17 @@ public class verificationController {
                 stage.setScene(scene);
                 stage.show();
             }
-
-
         }
         if(codeField.getText() == null || codeField.getText().trim().isEmpty()) {
             // Error text
         }
     }
 
-
-
+    /**
+     * Sends verification code to user
+     * @param receiver Email's recipient
+     * @param code verification code
+     * */
    private void sendEmail(String receiver, String code) throws MessagingException {
         // Email setup
         Properties properties = new Properties();
@@ -87,6 +91,13 @@ public class verificationController {
         Transport.send(message);
     }
 
+    /**
+     * Wraps up message to be emailed
+     * @param session ...
+     * @param receiver Email's recipient
+     * @param code Verification code
+     * @return Returns message to be sent
+     * */
    private Message verificationMessage(Session session, String receiver, String code) {
         try {
             Message message = new MimeMessage(session);
@@ -102,6 +113,13 @@ public class verificationController {
         return null;
     }
 
+    /**
+     * Displays confirmation after email is sent
+     * @param email User's email
+     * @param code verification code
+     * @param accountID User's account ID
+     * @param username Users's username
+     * */
    public void displayVerificationText(String email, String code, int accountID, String username) {
         this.username = username;
         this.accountID = accountID;
