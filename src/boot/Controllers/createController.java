@@ -51,6 +51,11 @@ public class createController {
 
     String ACCOUNTID;
 
+    /*
+     * Handles the event of clicking cancelButton at createScene.fxml
+     * Redirects back to BootScene.fxml
+     * @param event An event representing cancelButton been clicked
+     * */
     @FXML
     void handleCancel(ActionEvent event) throws IOException {
 
@@ -68,6 +73,11 @@ public class createController {
         }
     }
 
+    /*
+     * Handles the event of clicking submitButton at createScene.fxml
+     * Gets user data from fields at createScene.fxml and inserts them into database
+     * @param event An event representing loginButton been clicked
+     * */
     @FXML
     void handleSubmit(ActionEvent event) throws IOException {
 
@@ -115,7 +125,9 @@ public class createController {
     }
 
 
-
+    /*
+     * Clears all fields
+     * */
     private void parameterClearer(){
         usernameField.setText("");
         passwordField.setText("");
@@ -130,7 +142,10 @@ public class createController {
 
 
 
-
+    /*
+     * Checks for empty fields
+     * @return Returns true if all fields have data
+     * */
     private boolean emptyCheck() {
 
         for(int i = 0; i< data.length-1; i++){
@@ -144,6 +159,10 @@ public class createController {
 
     }
 
+    /*
+     * Checks if userField String has a valid name
+     * @return Returns true if the userField String contains only letters
+     * */
     private boolean usernameVerifyer(String a){
 
         if(data[0].matches("^[a-zA-Z0-9]*$")){
@@ -154,6 +173,12 @@ public class createController {
 
     }
 
+    /*
+     * Checks that both passField and passField2 are equal
+     * @param a String to be checked for equality
+     * @param b String to be checked for equality
+     * @return Returns true if passField and passField2 are equal
+     * */
     private boolean matchingPasswords(String a, String b){
         if(a.equals(b)){
             return true;
@@ -161,6 +186,10 @@ public class createController {
         return false;
     }
 
+    /*
+     * Process data from fields and store them in a String array
+     * @return Returns String array with all data from fields
+     * */
     private String [] getData(){
 
         String [] array = new String[7];
@@ -183,6 +212,11 @@ public class createController {
 
     }
 
+    /*
+     * Check String contains valid characters for a name
+     * @param text String to be validated
+     * @returns Returns true if given string contains valid characters
+     * */
     private boolean nameChecker(String text) {
 
         if(text.matches("[a-zA-Z]+")){
@@ -193,6 +227,11 @@ public class createController {
     }
 
 
+    /*
+     * Checks if emailField contains a valid email address
+     * @param email String to be validated
+     * @return Returns true if the email address is valid
+     * */
     private boolean emailVerifyer(String email) {
         if(!data[1].toLowerCase().contains("@gmu.edu")){
             return false;

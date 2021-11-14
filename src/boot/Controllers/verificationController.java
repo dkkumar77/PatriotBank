@@ -35,7 +35,10 @@ public class verificationController {
     int accountID;
     String username;
 
-
+    /*
+     * Handles the event of clicking confirmButton at verificationScene.fxml
+     * @param event An event representing confirmButton been clicked
+     * */
     @FXML
     void handleConfirm(ActionEvent event) throws IOException {
         Database e = new Database();

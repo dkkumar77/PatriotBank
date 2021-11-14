@@ -42,12 +42,21 @@ public class homeController {
 
     }
 
-
+    /*
+     * Handles the event of clicking financeButton at HomeScreen.fxml
+     * Loads FinanceScene.fxml
+     * @param event An event representing financeButton been clicked
+     * */
     @FXML
     void handleFinance(ActionEvent event) {
         finance.toFront();
     }
 
+    /*
+     * Handles the event of clicking financeButton at HomeScreen.fxml
+     * Loads SettingsScreen.fxml
+     * @param event An event representing settingsButton been clicked
+     * */
     @FXML
     void handleSettings(ActionEvent event) throws IOException {
         if(event.getSource().equals(settingsButton)) {
@@ -67,6 +76,11 @@ public class homeController {
 
     }
 
+    /*
+     * Handles the event of clicking outButton at HomeScreen.fxml
+     * Redirects back to BootScene.fxml
+     * @param event An event representing outButton been clicked
+     * */
     @FXML
     void handleOut(ActionEvent event) throws IOException {
 
