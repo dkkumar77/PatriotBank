@@ -18,7 +18,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-
+/**
+ * Holds methods to handle events at BootScene.fxml
+ * */
 public class LoginScreen {
 
     @FXML
@@ -45,14 +47,15 @@ public class LoginScreen {
     @FXML
     private Label passError;
 
-    String username = "";
-    String password = "";
+    /*changed from no access modifier to public access modifier*/
+    public String username = "";
+    public String password = "";
 
     private Parent root;
     private Stage stage;
     private Scene scene;
 
-    /*
+    /**
      * Handles the event of clicking loginButton at BootScene.fxml
      * Redirects to HomeScreen.fxml once user name and password is verified
      * @param event An event representing loginButton been clicked
@@ -70,7 +73,6 @@ public class LoginScreen {
                 passField.setText("");
                 userError.setText("Empty Username or Password");
                 userError.toFront();
-
             }
             else{
                 if ((checkDatabase(userField.getText().toLowerCase(), b.hashPass(passField.getText())))) {
@@ -84,28 +86,16 @@ public class LoginScreen {
                     stage.show();
                 }
                 else{
-
                     userError.toFront();
                     passError.toFront();
                     userError.setText("ERROR");
                     passError.setText("ERROR");
-
                 }
-
             }
-
-
-
-
-
-
         }
-
-
-
     }
 
-    /*
+    /**
      * Handles the event of clicking createButton at BootScene.fxml
      * Redirects to createScene.fxml to allow user to create a new account
      * @param event An event representing loginButton been clicked
@@ -114,14 +104,11 @@ public class LoginScreen {
     void handleCreate(ActionEvent event) throws IOException {
         if(event.getSource().equals(createButton)){
             sceneChanger(PathModel.CreateScene, event);
-
-
-
         }
     }
 
 
-    /*
+    /**
      * Handles the event of clicking forgotButton at BootScene.fxml
      * Redirects to forgotBox.fxml
      * @param event An event representing forgotButton been clicked
@@ -136,7 +123,7 @@ public class LoginScreen {
         stage.show();
     }
 
-    /*
+    /**
      * Handles the event of clicking helpButton at BootScene.fxml
      * Redirects to HelpScreen.fxml
      * @param event An event representing helpButton been clicked
@@ -145,29 +132,37 @@ public class LoginScreen {
     void handleHelp(ActionEvent event) throws IOException {
         if(event.getSource().equals(helpButton)){
             sceneChanger(PathModel.HelpScreen, event);
-
-
         }
-
     }
 
+    /**
+     * To be updated
+     * */
     @FXML
     void handlePassword(ActionEvent event) {
 
     }
 
+    /**
+     * Checks if username's password equals to parameter password
+     * @param username User's username
+     * @param password string to be verified if is user's password
+     * @return true if user's password matches password parameter, false if otherwise
+     * */
     boolean checkDatabase(String username, String password){
 
         Database e = new Database();
-
-
         if(e.getPassword(username).equals(password)){
             return true;
         }
         return false;
-
     }
 
+    /**
+     * To be updated
+     * @param path To be updated
+     * @param event To be updated
+     * */
     private void sceneChanger(String path, ActionEvent event) throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
         root = loader.load();
@@ -193,17 +188,21 @@ public class LoginScreen {
      *
      */
 
-
-
-
-
-
+    /**
+     *  clears username and password parameters
+     * */
     private void clearParameters() {
         this.username = "";
         this.password = "";
 
     }
 
+    /**
+     * To be updated
+     * @param username To be updated
+     * @param password To be updated
+     * @return To be updated
+     * */
     private boolean passwordVerifyer(String username, String password) {
         if (password.contains(" ")) {
             return true;
@@ -211,6 +210,10 @@ public class LoginScreen {
         return false;
     }
 
+    /**
+     * Checks if userField text field is empty
+     * @return return true if userField text field is empty, false otherwise
+     * */
     private boolean checkName() {
         if(userField.getText() == null || userField.getText().trim().isEmpty()) {
             userError.setText("Please enter username.");
@@ -220,6 +223,10 @@ public class LoginScreen {
         return true;
     }
 
+    /**
+     * Checks if passField text field is empty
+     * @return return true if passField text field is empty, false otherwise
+     * */
     private boolean checkPassword() {
         if(passField.getText() == null || passField.getText().trim().isEmpty()) {
             passError.setText("Please enter password.");

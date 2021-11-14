@@ -16,6 +16,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Holds methods to handle events at SettingsScreen.fxml
+ * */
 public class Settings {
 
     @FXML
@@ -55,12 +58,16 @@ public class Settings {
     @FXML
     private JFXPasswordField passwordForClose;
 
-    Database e;
+    /*changed from no access modifier to public access modifier*/
+    public Database e;
+    public String user;
 
-    String user;
-
+    /**
+     * Handles the event of clicking accountInfo button atSettingsScreen.fxml
+     * @param event An event representing accountInfo button been clicked
+     * */
     @FXML
-    void handleAccountInfo(ActionEvent event) {
+    public void handleAccountInfo(ActionEvent event) {  /*changed from no access modifier to public access modifier*/
 
         if(event.getSource().equals(accountInfo)){
             change.toBack();
@@ -68,36 +75,45 @@ public class Settings {
             clearPreexistingParameters();
 
             info.toFront();
-
-
         }
     }
 
-
+    /**
+     * Clear oldPass text field.
+     * */
     public void clearPreexistingParameters() {
         oldpass.setText("");
     }
 
+    /**
+     * Handles the event of clicking changePass button atSettingsScreen.fxml
+     * @param event An event representing accountInfo button been clicked
+     * */
     @FXML
-    void handleChangePassword(ActionEvent event) {
+    public void handleChangePassword(ActionEvent event) {  /*changed from no access modifier to public access modifier*/
         if(event.getSource().equals(changePass)){
             info.toBack();
             delete.toBack();
             change.toFront();
         }
-
     }
 
-
+    /**
+     * To be implemented
+     * @param event To be implemented
+     * */
     @FXML
-    void handleBack(ActionEvent event){
+    public void handleBack(ActionEvent event){ /*changed from no access modifier to public access modifier*/
         if(event.getSource().equals(event));
         {
 
         }
-
     }
 
+    /**
+     * Retrieves user's information from database to display
+     * @param user User's username
+     * */
     public void setAll(String user ){
         Database e = new Database();
         this.user = user;
@@ -110,21 +126,25 @@ public class Settings {
         info.toBack();
         change.toBack();
         delete.toBack();
-
     }
 
+    /**
+     * Handles the event of clicking closeAccount button atSettingsScreen.fxml
+     * @param event An event representing closeAccount button been clicked
+     * */
     @FXML
     public void handleCloseAccount(ActionEvent event){
         if(event.getSource().equals(closeAccount)) {
             info.toBack();
             change.toBack();
             delete.toFront();
-
         }
-
     }
 
-
+    /**
+     * Handles the event of clicking submitClose button atSettingsScreen.fxml
+     * @param event An event representing submitClose button been clicked
+     * */
     @FXML
     public void handleSubmitClose(ActionEvent event) throws IOException{
         Database e = new Database();
@@ -148,6 +168,10 @@ public class Settings {
         }
     }
 
+    /**
+     * Handles the event of clicking submit button atSettingsScreen.fxml
+     * @param actionEvent An event representing submit button been clicked
+     * */
     @FXML
     public void handleSubmit(ActionEvent actionEvent) throws IOException {
         Database e = new Database();
@@ -160,9 +184,6 @@ public class Settings {
                 newPass.setText("");
                 confirmNewPassword.setText("");
                 oldpass.setText("");
-
-
-
 
             }
         }
