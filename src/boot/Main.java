@@ -6,8 +6,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Main class for JavaFX application.
+ * */
 public class Main extends Application {
 
+    /**
+     * Called when the JavaFX application is started.
+     * @param primaryStage Where all the visual parts of the JavaFX application are displayed.
+     * */
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("View/BootScene.fxml"));

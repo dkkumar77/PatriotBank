@@ -19,6 +19,9 @@ import javax.mail.internet.InternetAddress;
 import java.io.IOException;
 import java.util.Random;
 
+/**
+ * Holds methods to handle events at createScene.fxml, where user creates new account.
+ * */
 public class createController {
 
     @FXML
@@ -28,11 +31,7 @@ public class createController {
     private JFXButton submitButton;
 
     @FXML
-    private JFXTextField usernameField, firstName, lastName;
-
-
-    @FXML
-    private JFXTextField emailField;
+    private JFXTextField usernameField, firstName, lastName, emailField;
 
     @FXML
     private JFXPasswordField passwordField, passwordField2;
@@ -44,14 +43,12 @@ public class createController {
     private Stage stage;
     private Scene scene;
 
+    /*changed from no access modifier to public access modifier*/
+    public String[] data = new String[7];
+    public String code;
+    public String ACCOUNTID;
 
-    String[] data = new String[7];
-    String code;
-
-
-    String ACCOUNTID;
-
-    /*
+    /**
      * Handles the event of clicking cancelButton at createScene.fxml
      * Redirects back to BootScene.fxml
      * @param event An event representing cancelButton been clicked
@@ -73,7 +70,7 @@ public class createController {
         }
     }
 
-    /*
+    /**
      * Handles the event of clicking submitButton at createScene.fxml
      * Gets user data from fields at createScene.fxml and inserts them into database
      * @param event An event representing loginButton been clicked
@@ -125,7 +122,7 @@ public class createController {
     }
 
 
-    /*
+    /**
      * Clears all fields
      * */
     private void parameterClearer(){
@@ -142,7 +139,7 @@ public class createController {
 
 
 
-    /*
+    /**
      * Checks for empty fields
      * @return Returns true if all fields have data
      * */
@@ -159,7 +156,7 @@ public class createController {
 
     }
 
-    /*
+    /**
      * Checks if userField String has a valid name
      * @return Returns true if the userField String contains only letters
      * */
@@ -173,7 +170,7 @@ public class createController {
 
     }
 
-    /*
+    /**
      * Checks that both passField and passField2 are equal
      * @param a String to be checked for equality
      * @param b String to be checked for equality
@@ -186,7 +183,7 @@ public class createController {
         return false;
     }
 
-    /*
+    /**
      * Process data from fields and store them in a String array
      * @return Returns String array with all data from fields
      * */
@@ -212,7 +209,7 @@ public class createController {
 
     }
 
-    /*
+    /**
      * Check String contains valid characters for a name
      * @param text String to be validated
      * @returns Returns true if given string contains valid characters
@@ -227,7 +224,7 @@ public class createController {
     }
 
 
-    /*
+    /**
      * Checks if emailField contains a valid email address
      * @param email String to be validated
      * @return Returns true if the email address is valid
