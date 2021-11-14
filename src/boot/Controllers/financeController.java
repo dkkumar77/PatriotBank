@@ -12,6 +12,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.text.NumberFormat;
 
+/**
+ * Holds methods to handle events related to money transfer.
+ * */
 public class financeController {
 
     @FXML
@@ -41,6 +44,10 @@ public class financeController {
         showBox("Withdraw");
     }
 
+    /**
+     * Updates balance from database.
+     * @param username User's username.
+     * */
     private void updateBalance(String username) {
         // Get balance from database
         double bal = new Database().getBalance("username");
@@ -49,6 +56,9 @@ public class financeController {
         balance.setText("$" + money.format(bal));
     }
 
+    /**
+     * To be updated
+     * */
     private void showBox(String type) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/boot/View/" + type + "Box.fxml"));
         Stage stage = new Stage();

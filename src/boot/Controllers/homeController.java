@@ -14,6 +14,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Holds methods to handle events at HomeScreen.fxml
+ * */
 public class homeController {
 
     @FXML
@@ -28,21 +31,21 @@ public class homeController {
     @FXML
     private StackPane stackPane;
 
-    AnchorPane finance, settings;
+    /*changed from no access modifier to public access modifier*/
+    public AnchorPane finance, settings;
+    public String username;
 
-    String username;
-
-
+    /**
+     * Initializes controllers at HomeScreen.fxml
+     * */
     public void initialize() throws IOException {
         finance = FXMLLoader.load(getClass().getResource(PathModel.FinanceScene));
         settings = FXMLLoader.load(getClass().getResource(PathModel.SettingsScreen));
         stackPane.getChildren().add((Node) settings);
         stackPane.getChildren().add((Node) finance);
-
-
     }
 
-    /*
+    /**
      * Handles the event of clicking financeButton at HomeScreen.fxml
      * Loads FinanceScene.fxml
      * @param event An event representing financeButton been clicked
@@ -52,7 +55,7 @@ public class homeController {
         finance.toFront();
     }
 
-    /*
+    /**
      * Handles the event of clicking financeButton at HomeScreen.fxml
      * Loads SettingsScreen.fxml
      * @param event An event representing settingsButton been clicked
@@ -76,7 +79,7 @@ public class homeController {
 
     }
 
-    /*
+    /**
      * Handles the event of clicking outButton at HomeScreen.fxml
      * Redirects back to BootScene.fxml
      * @param event An event representing outButton been clicked
@@ -89,11 +92,12 @@ public class homeController {
         }
     }
 
-
-
+    /**
+     * To be updated
+     * @param path To be updated
+     * @param event To be updated
+     * */
     private void sceneChanger(String path, ActionEvent event) throws IOException{
-
-
         Stage stage;
         Parent root;
 
@@ -105,8 +109,11 @@ public class homeController {
         stage.show();
     }
 
+    /**
+     * To be updated
+     * @param username To be updated
+     * */
     public void passData(String username) {
-
         this.username = username;
     }
 }

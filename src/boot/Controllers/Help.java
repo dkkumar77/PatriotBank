@@ -18,9 +18,11 @@ import com.jfoenix.controls.JFXTextArea;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
+/**
+ * Holds methods to handle events at helpScreen.fxml
+ * */
 public class Help {
 
-    /*Testing comment123*/
     @FXML
     private JFXTextArea messageArea;
 
@@ -30,19 +32,19 @@ public class Help {
     @FXML
     private JFXButton back;
 
-
     private String message;
 
-    Parent root;
-    Stage stage;
-    Scene scene;
+    /*changed from no access modifier to public access modifier*/
+    public Parent root;
+    public Stage stage;
+    public Scene scene;
 
-    /*
+    /**
      * Handles the event of clicking back button at helpScreen.fxml
      * @param event An event representing back button been clicked
      * */
     @FXML
-    void handleBack(ActionEvent event) throws IOException {
+    public void handleBack(ActionEvent event) throws IOException {  /*changed from no access modifier to public access modifier*/
 
         if(event.getSource().equals(back)){
             FXMLLoader loader = new FXMLLoader(getClass().getResource(PathModel.BootScene));
@@ -54,12 +56,12 @@ public class Help {
         }
     }
 
-    /*
+    /**
      * Handles the event of clicking submit button at helpScreen.fxml
      * @param event An event representing submit button been clicked
      * */
     @FXML
-    void handleSubmit(ActionEvent event) {
+    public void handleSubmit(ActionEvent event) {  /*changed from no access modifier to public access modifier*/
 
         if(event.getSource().equals(submit)){
             message = messageArea.toString();
