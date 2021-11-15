@@ -2,6 +2,7 @@ package boot.Controllers;
 
 import boot.BCrypt.BCrypt;
 import boot.Model.PathModel;
+import boot.userInstance;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -76,10 +77,10 @@ public class LoginScreen {
                     userError.toFront();
                 } else {
                     if ((checkDatabase(userField.getText().toLowerCase(), b.hashPass(passField.getText())))) {
+                        userInstance.getInstance(userField.getText());
                         FXMLLoader loader = new FXMLLoader(getClass().getResource(PathModel.HomeScreen));
                         root = loader.load();
                         homeController controller = loader.getController();
-                        controller.passData(userField.getText());
                         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                         scene = new Scene(root);
                         stage.setScene(scene);
