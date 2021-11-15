@@ -113,6 +113,7 @@ public class Settings {
 
     public void initialize() {
         user = userInstance.getInstance().getUsername();
+        setAll(user);
     }
 
     /**
