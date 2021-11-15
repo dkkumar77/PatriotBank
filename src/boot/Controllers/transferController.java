@@ -22,23 +22,26 @@ public class transferController {
     private Label textLabel;
 
     private String username;
+    private String username2;
 
     @FXML
     void handleTransfer(ActionEvent event) {
         Database e = new Database();
         if(event.getSource().equals(transferButton)) {
+            username2 = userField.getText();
             double amt = Double.parseDouble(amountField.getText());
             double bal = e.getBalance(username);
-            String user2 = userField.getText();
-            if(e.checkDatabase(user2)) {
+            double bal2 = e.getBalance(username2);
+            System.out.println(bal);
+            System.out.println(bal2);
+            if(e.checkDatabase(username2)) {
                 if(amt > bal) {
                     textLabel.setText("Insufficient Funds");
+                    return;
                 }
-                else {
-                    e.updateBalance(username, (e.getBalance((username)) - amt));
-                    e.updateBalance(user2, (e.getBalance((user2)) + amt));
-                    textLabel.setText("Transfer Complete");
-                }
+                e.updateBalance(username, (bal - amt));
+                e.updateBalance(username2, (bal2 + amt));
+                textLabel.setText("Transfer Complete");
             }
             else {
                 textLabel.setText("Invalid User");
