@@ -1,7 +1,9 @@
 package boot.Controllers;
 
+import boot.userInstance;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,6 +11,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+
 import java.io.IOException;
 import java.text.NumberFormat;
 
@@ -28,6 +32,8 @@ public class financeController {
 
     @FXML
     private JFXButton withdrawButton;
+
+    private String username;
 
     @FXML
     void handleTransfer(ActionEvent event) throws IOException {
@@ -50,7 +56,7 @@ public class financeController {
      * */
     private void updateBalance(String username) {
         // Get balance from database
-        double bal = new Database().getBalance("username");
+        double bal = new Database().getBalance(username);
 
         NumberFormat money = NumberFormat.getInstance();
         balance.setText("$" + money.format(bal));
@@ -66,9 +72,16 @@ public class financeController {
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                updateBalance(username);
+            }
+        });
     }
 
-    public void initialize(String username) {
+    public void initialize() {
+        username = userInstance.getInstance().getUsername();
         updateBalance(username);
     }
 }

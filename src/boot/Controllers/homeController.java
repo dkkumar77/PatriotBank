@@ -1,6 +1,7 @@
 package boot.Controllers;
 
 import boot.Model.PathModel;
+import boot.userInstance;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -29,6 +31,9 @@ public class homeController {
     private JFXButton outButton;
 
     @FXML
+    private Label welcomeLabel;
+
+    @FXML
     private StackPane stackPane;
 
     /*changed from no access modifier to public access modifier*/
@@ -39,6 +44,9 @@ public class homeController {
      * Initializes controllers at HomeScreen.fxml
      * */
     public void initialize() throws IOException {
+        Database e = new Database();
+        username = userInstance.getInstance().getUsername();
+        welcomeLabel.setText("Welcome, " + e.getName(username));
         finance = FXMLLoader.load(getClass().getResource(PathModel.FinanceScene));
         settings = FXMLLoader.load(getClass().getResource(PathModel.SettingsScreen));
         stackPane.getChildren().add((Node) settings);
@@ -62,6 +70,7 @@ public class homeController {
      * */
     @FXML
     void handleSettings(ActionEvent event) throws IOException {
+        /*
         if(event.getSource().equals(settingsButton)) {
             Parent root;
             Stage stage;
@@ -76,7 +85,8 @@ public class homeController {
             stage.setScene(scene);
             stage.show();
         }
-
+        */
+        settings.toFront();
     }
 
     /**

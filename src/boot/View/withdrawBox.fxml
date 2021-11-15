@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boot.Controllers.withdrawController">
    <children>
       <BorderPane prefHeight="300.0" prefWidth="400.0">
          <top>
@@ -26,22 +26,22 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #1d1e2a;" BorderPane.alignment="CENTER">
                <children>
-                  <JFXTextField focusColor="#006940" layoutX="100.0" layoutY="74.0" prefWidth="200.0" style="-fx-prompt-text-fill: #dcdcdc; -fx-background-color: #232b32; -fx-text-inner-color: #dcdcdc;" unFocusColor="#4d4d4d00" />
-                  <JFXButton layoutX="125.0" layoutY="150.0" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #006940;" text="Withdraw" textFill="GAINSBORO">
+                  <JFXTextField fx:id="amountField" focusColor="#006940" layoutX="75.0" layoutY="75.0" prefHeight="40.0" prefWidth="250.0" style="-fx-prompt-text-fill: #dcdcdc; -fx-background-color: #232b32; -fx-text-inner-color: #dcdcdc;" unFocusColor="#4d4d4d00" />
+                  <JFXButton fx:id="withdrawButton" layoutX="125.0" layoutY="160.0" onAction="#handleWithdraw" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #006940;" text="Withdraw" textFill="GAINSBORO">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton layoutX="125.0" layoutY="195.0" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #006940;" text="Cancel" textFill="GAINSBORO">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </JFXButton>
-                  <Text fill="GAINSBORO" layoutX="100.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount" AnchorPane.topAnchor="50.0">
+                  <Text fill="GAINSBORO" layoutX="168.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount" AnchorPane.topAnchor="49.576171875">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
+                  <Label fx:id="textLabel" alignment="CENTER" layoutX="121.0" layoutY="14.0" textAlignment="CENTER" textFill="WHITE" AnchorPane.topAnchor="15.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </center>

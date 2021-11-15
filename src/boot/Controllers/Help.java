@@ -13,10 +13,16 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Properties;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 /**
  * Holds methods to handle events at helpScreen.fxml
@@ -32,12 +38,17 @@ public class Help {
     @FXML
     private JFXButton back;
 
-    private String message;
+    //private String message;
 
     /*changed from no access modifier to public access modifier*/
     public Parent root;
     public Stage stage;
     public Scene scene;
+
+    Properties properties = new Properties();
+
+    private String sender = "cs321team6@gmail.com";
+    private String senderPassword = "teamsixproject1!";
 
     /**
      * Handles the event of clicking back button at helpScreen.fxml
@@ -61,18 +72,45 @@ public class Help {
      * @param event An event representing submit button been clicked
      * */
     @FXML
-    public void handleSubmit(ActionEvent event) {  /*changed from no access modifier to public access modifier*/
+    public void handleSubmit(ActionEvent event) throws MessagingException{  /*changed from no access modifier to public access modifier*/
 
         if(event.getSource().equals(submit)){
-            message = messageArea.toString();
+            //message = messageArea.toString();
 
 
             /*
             SEND MESSAGE TO 321 TEAM EMAIL
              */
-
+            Session session = Session.getInstance(properties, new Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(sender, senderPassword);
+                }
+            });
+            Message message = feedbackMessage(session);
+            Transport.send(message);
         }
 
     }
+    public void initialize() {
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+    }
 
+    private Message feedbackMessage(Session session) {
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("cs321team6@gmail.com"));
+            message.setRecipient(Message.RecipientType.TO, new InternetAddress("cs321team6@gmail.com"));
+            message.setSubject("Patriot Bank Feedback");
+            message.setText(messageArea.getText());
+            return message;
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }

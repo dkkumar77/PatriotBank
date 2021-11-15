@@ -2,6 +2,7 @@ package boot.Controllers;
 
 import boot.BCrypt.BCrypt;
 import boot.Model.PathModel;
+import boot.userInstance;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -108,6 +109,10 @@ public class Settings {
         {
 
         }
+    }
+
+    public void initialize() {
+        user = userInstance.getInstance().getUsername();
     }
 
     /**
