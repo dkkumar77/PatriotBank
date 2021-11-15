@@ -67,7 +67,7 @@ public class verificationController {
      * @param receiver Email's recipient
      * @param code verification code
      * */
-   private void sendEmail(String receiver, String code) throws MessagingException {
+   public void sendEmail(String receiver, String code) throws MessagingException {
         // Email setup
         Properties properties = new Properties();
 

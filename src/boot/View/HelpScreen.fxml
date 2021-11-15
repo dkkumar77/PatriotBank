@@ -3,25 +3,21 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: src/boot/View/sincerely-media-4dSXcNTyXaI-unsplash.jpg;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boot.Controllers.Help">
+<AnchorPane maxHeight="539.0" maxWidth="816.0" minHeight="539.0" minWidth="816.0" prefHeight="539.0" prefWidth="816.0" style="-fx-background-color: #1d1e2a;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boot.Controllers.Help">
    <children>
-      <ImageView fitHeight="440.0" fitWidth="661.0" layoutX="-30.0" layoutY="-28.0">
-         <image>
-            <Image url="@sincerely-media-4dSXcNTyXaI-unsplash.jpg" />
-         </image>
-      </ImageView>
-      <JFXTextArea fx:id="messageArea" focusColor="#183280" labelFloat="true" layoutX="78.0" layoutY="102.0" prefHeight="205.0" prefWidth="500.0" promptText="Enter Message:" unFocusColor="#89a46a">
+      <JFXTextArea fx:id="messageArea" focusColor="#183280" labelFloat="true" layoutX="45.0" layoutY="154.0" prefHeight="231.0" prefWidth="727.0" promptText="Enter Message:" unFocusColor="#89a46a" styleClass="jfx-text-area" stylesheets="@style.css">
          <font>
             <Font name="Helvetica Neue" size="13.0" />
          </font>
       </JFXTextArea>
-      <JFXButton fx:id="submit" buttonType="RAISED" layoutX="520.0" layoutY="316.0" onAction="#handleSubmit" text="Submit" />
-      <JFXButton fx:id="back" buttonType="RAISED" layoutX="23.0" layoutY="14.0" onAction="#handleBack" text="Back" textAlignment="CENTER" />
-      <JFXTextField alignment="CENTER" editable="false" layoutX="58.0" layoutY="52.0" prefHeight="27.0" prefWidth="557.0" text="The help menu is designed in order for users to test and report any bugs that have been encountered." unFocusColor="#5da43c" />
+      <JFXButton fx:id="submit" buttonType="RAISED" layoutX="597.0" layoutY="415.0" onAction="#handleSubmit" prefHeight="62.0" prefWidth="112.0" text="Submit" textFill="WHITE" />
+      <JFXButton fx:id="back" buttonType="RAISED" layoutX="23.0" layoutY="14.0" onAction="#handleBack" text="Back" textAlignment="CENTER" textFill="WHITE" />
+      <JFXTextField alignment="CENTER" editable="false" focusColor="#1d1e2a" layoutX="45.0" layoutY="71.0" prefHeight="34.0" prefWidth="689.0" text="The help menu is designed in order for users to test and report any bugs that have been encountered." unFocusColor="#1d1e2a"  styleClass="jfx-text-field" stylesheets="@style.css">
+         <font>
+            <Font size="15.0" />
+         </font></JFXTextField>
    </children>
 </AnchorPane>

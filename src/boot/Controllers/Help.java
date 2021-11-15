@@ -72,15 +72,10 @@ public class Help {
      * @param event An event representing submit button been clicked
      * */
     @FXML
-    public void handleSubmit(ActionEvent event) throws MessagingException{  /*changed from no access modifier to public access modifier*/
+    public void handleSubmit(ActionEvent event) throws MessagingException, IOException {  /*changed from no access modifier to public access modifier*/
 
         if(event.getSource().equals(submit)){
-            //message = messageArea.toString();
 
-
-            /*
-            SEND MESSAGE TO 321 TEAM EMAIL
-             */
             Session session = Session.getInstance(properties, new Authenticator() {
                 @Override
                 protected PasswordAuthentication getPasswordAuthentication() {
@@ -89,7 +84,20 @@ public class Help {
             });
             Message message = feedbackMessage(session);
             Transport.send(message);
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(PathModel.BootScene));
+            root = loader.load();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+            handleBack(event);
+
         }
+
+
+
 
     }
     public void initialize() {
