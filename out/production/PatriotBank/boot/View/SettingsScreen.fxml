@@ -28,7 +28,7 @@
       </AnchorPane>
       <AnchorPane fx:id="delete" layoutX="323.0" layoutY="63.0" prefHeight="200.0" prefWidth="200.0">
          <children>
-            <JFXTextArea editable="false" focusColor="#1e1e22" layoutY="-2.0" prefHeight="71.0" prefWidth="200.0" text="Type in your password in order to delete your account. Deleted accounts can not be restored." unFocusColor="#1e1e22" />
+            <JFXTextArea editable="false" focusColor="#1e1e22" layoutY="-2.0" prefHeight="71.0" prefWidth="200.0" text="Type in your password in order to delete your account. Deleted accounts can not be restored."  styleClass="jfx-text-area" stylesheets="@style.css" unFocusColor="#257944" />
             <JFXPasswordField fx:id="passwordForClose" alignment="CENTER" layoutX="28.0" layoutY="87.0" promptText="Password" />
             <JFXButton fx:id="submitClose" layoutX="131.0" layoutY="131.0" onAction="#handleSubmitClose" text="Submit" textFill="WHITE" />
          </children>

@@ -8,6 +8,13 @@
 
 }
 
+.jfx-text-area {
+    -fx-text-fill: #006940;
+    -fx-prompt-text-fill: #006940;
+    -jfx-focus-color: #1d1e2a;
+    -jfx-unfocus-color: #1d1e2a;
+
+}
 .jfx-text-field {
     -fx-text-fill: #006940;
     -fx-prompt-text-fill: #006940;
