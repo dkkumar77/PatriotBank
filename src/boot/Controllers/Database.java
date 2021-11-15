@@ -15,6 +15,7 @@ package boot.Controllers;
  */
 
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.document.*;
@@ -227,20 +228,12 @@ public class Database {
      * @param username User's username
      * @return Returns true if user exists, false if otherwise
      * */
-    public boolean checkDatabase(String username){
+    public boolean checkDatabase(String username) {
 
-        AmazonDynamoDB client = AmazonDynamoDBClientBuilder.standard().withRegion(Regions.US_EAST_1).build();
-        DynamoDB dynamoDB = new DynamoDB(client);
-        this.table = dynamoDB.getTable("data");
-        DynamoDBMapper mapper = new DynamoDBMapper(client);
-        Item item = mapper.load(Item.class, username);
-        if(item == null){
-            return false;
-        }
-        else{
-            return true;
-        }
+        return false;
+
     }
+    
 
     /**
      * Deletes user with given username.
@@ -254,11 +247,9 @@ public class Database {
 
     public static void main(String[] args) {
         Database e = new Database();
-        System.out.println(e.checkDatabase("dkumar9"));
+        e.checkDatabase("master");
+
     }
-
-
-
     }
 
 

@@ -32,9 +32,6 @@ public class transferController {
             double amt = Double.parseDouble(amountField.getText());
             double bal = e.getBalance(username);
             double bal2 = e.getBalance(username2);
-            System.out.println(bal);
-            System.out.println(bal2);
-            if(e.checkDatabase(username2)) {
                 if(amt > bal) {
                     textLabel.setText("Insufficient Funds");
                     return;
@@ -46,7 +43,7 @@ public class transferController {
             else {
                 textLabel.setText("Invalid User");
             }
-        }
+
     }
 
     public void initialize() {
