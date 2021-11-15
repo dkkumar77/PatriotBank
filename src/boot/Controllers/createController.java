@@ -77,7 +77,7 @@ public class createController {
      * */
     @FXML
     void handleSubmit(ActionEvent event) throws IOException {
-
+        System.out.println(dob.getValue());                                                            /*TESTING*/
         if (event.getSource().equals(submitButton)) {
 
             data = getData();

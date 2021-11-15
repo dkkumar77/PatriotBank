@@ -63,35 +63,40 @@ public class LoginScreen {
     @FXML
     void handleLogin(ActionEvent event) throws IOException {
 
-        BCrypt b = new BCrypt();
+        try {
+            BCrypt b = new BCrypt();
 
-        if(event.getSource().equals(loginButton)) {
-            userError.toBack();
-            passError.toBack();
-            if (userField.getText().equals("") || passField.getText().equals("")) {
-                userField.setText("");
-                passField.setText("");
-                userError.setText("Empty Username or Password");
-                userError.toFront();
-            }
-            else{
-                if ((checkDatabase(userField.getText().toLowerCase(), b.hashPass(passField.getText())))) {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource(PathModel.HomeScreen));
-                    root = loader.load();
-                    homeController controller = loader.getController();
-                    controller.passData(userField.getText());
-                    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();
-                }
-                else{
+            if (event.getSource().equals(loginButton)) {
+                userError.toBack();
+                passError.toBack();
+                if (userField.getText().equals("") || passField.getText().equals("")) {
+                    userField.setText("");
+                    passField.setText("");
+                    userError.setText("Empty Username or Password");
                     userError.toFront();
-                    passError.toFront();
-                    userError.setText("ERROR");
-                    passError.setText("ERROR");
+                } else {
+                    if ((checkDatabase(userField.getText().toLowerCase(), b.hashPass(passField.getText())))) {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource(PathModel.HomeScreen));
+                        root = loader.load();
+                        homeController controller = loader.getController();
+                        controller.passData(userField.getText());
+                        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        scene = new Scene(root);
+                        stage.setScene(scene);
+                        stage.show();
+                    } else {
+                        userError.toFront();
+                        passError.toFront();
+                        userError.setText("ERROR");
+                        passError.setText("ERROR");
+                    }
                 }
             }
+        }catch(RuntimeException e){
+            userField.setText("");
+            passField.setText("");
+            userError.setText("Wrong username/password");
+            userError.toFront();
         }
     }
 
