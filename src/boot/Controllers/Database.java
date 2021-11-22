@@ -242,6 +242,7 @@ public class Database {
     public void deleteItem(String username){
         DeleteItemSpec deleteItemSpec = new DeleteItemSpec().withPrimaryKey("username", username);
         table.deleteItem(deleteItemSpec);
+
     }
 
 
@@ -251,6 +252,11 @@ public class Database {
 
     }
     }
+
+
+
+
+
 
 
 

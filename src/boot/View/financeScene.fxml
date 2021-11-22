@@ -44,17 +44,17 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="365.0" layoutY="40.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="371.0" layoutY="40.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../media/transfer.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="608.0" layoutY="40.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="612.0" layoutY="40.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../media/withdraw.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="488.0" layoutY="40.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="492.0" layoutY="40.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../media/deposit.png" />
          </image>
