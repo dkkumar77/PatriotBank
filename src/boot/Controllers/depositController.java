@@ -30,6 +30,12 @@ public class depositController {
         }
     }
 
+    public void handleDepositTest(Double amt, String user) {
+        Database e = new Database();
+        e.updateBalance(user,(e.getBalance((user)) + amt));
+        System.out.println("Deposit Complete");
+    }
+
     public void initialize() {
         username = userInstance.getInstance().getUsername();
     }

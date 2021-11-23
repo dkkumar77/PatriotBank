@@ -36,7 +36,20 @@ public class withdrawController {
         }
     }
 
+    public void handleWithdrawTest(double amt, String user) {
+        Database e = new Database();
+        double bal = e.getBalance(user);
+        if(amt > bal) {
+            System.out.println("Insufficient Funds");
+        }
+        else {
+            e.updateBalance(user, (e.getBalance((user)) - amt));
+            System.out.println("Withdraw Complete");
+        }
+    }
+
     public void initialize() {
         username = userInstance.getInstance().getUsername();
     }
+
 }

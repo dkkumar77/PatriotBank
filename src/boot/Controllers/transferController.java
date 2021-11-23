@@ -32,18 +32,32 @@ public class transferController {
             double amt = Double.parseDouble(amountField.getText());
             double bal = e.getBalance(username);
             double bal2 = e.getBalance(username2);
-                if(amt > bal) {
-                    textLabel.setText("Insufficient Funds");
-                    return;
-                }
-                e.updateBalance(username, (bal - amt));
-                e.updateBalance(username2, (bal2 + amt));
-                textLabel.setText("Transfer Complete");
+            if(amt > bal) {
+                textLabel.setText("Insufficient Funds");
+                return;
             }
+            e.updateBalance(username, (bal - amt));
+            e.updateBalance(username2, (bal2 + amt));
+            textLabel.setText("Transfer Complete");
+        }
+            /*
             else {
                 textLabel.setText("Invalid User");
             }
+            */
+    }
 
+    public void handleTransferTest(Double amt, String sender, String receiver) {
+        Database e = new Database();
+        double bal = e.getBalance(sender);
+        double bal2 = e.getBalance(receiver);
+        if(amt > bal) {
+            System.out.println("Insufficient Funds");
+            return;
+        }
+        e.updateBalance(sender, (bal - amt));
+        e.updateBalance(receiver, (bal2 + amt));
+        System.out.println("Transfer Complete");
     }
 
     public void initialize() {
